@@ -32,7 +32,8 @@ lsp_installer.on_server_ready(function(server)
 	 end
 
     if server.name == "jdtls" then
-        print("java")
+        local java_opts = require("setup.lsp.settings.jdtls")
+	 	opts = vim.tbl_deep_extend("force", java_opts, opts)
     end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
