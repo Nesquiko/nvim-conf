@@ -103,6 +103,10 @@ return packer.startup(function(use)
     -- ToggleTerm
     use "akinsho/toggleterm.nvim"
 
+
+    -- Java LSP JDTLS
+    use 'mfussenegger/nvim-jdtls'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
