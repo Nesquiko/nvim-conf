@@ -64,19 +64,18 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope
 keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>lg", "<cmd>Telescope live_grep<cr>", opts) 
+keymap("n", "<leader>lg", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>E", ":NvimTreeFocus<cr>", opts)
 
 -- Bufferline
-keymap("n", "<c-w>", ":Bdelete %<CR>",opts)
+keymap("n", "<c-w>", ":Bdelete %<CR>", opts)
 
 -- Null-ls format
-keymap("n", "<leader>ll", ":Format<CR>",opts)
+keymap("n", "<leader>ll", ":Format<CR>", opts)
 
 -- ToggleTerm
-keymap("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>",opts)
-keymap("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>",opts)
-
+keymap("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>", opts)
+keymap("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>", opts)
