@@ -79,3 +79,4 @@ keymap("n", "<leader>ll", ":Format<CR>", opts)
 -- ToggleTerm
 keymap("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>", opts)
 keymap("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>", opts)
+keymap("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
