@@ -8,4 +8,6 @@ My personal neovim config.
     - main entry point for neovim, written in Lua
 - lua/setup
     - directory for plugin config files
+- ftplugin
+    - needed for java lsp
 
