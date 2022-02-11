@@ -119,6 +119,9 @@ return packer.startup(function(use)
 	-- Alpha
 	use("goolord/alpha-nvim")
 
+	-- Surround
+	use("blackCauldron7/surround.nvim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
