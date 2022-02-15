@@ -80,3 +80,6 @@ keymap("n", "<leader>ll", ":Format<CR>", opts)
 keymap("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>", opts)
 keymap("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>", opts)
 keymap("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
+
+-- Yabs code runners
+keymap("n", "<F10>", ":lua require('yabs'):run_task('run')<CR>", opts)

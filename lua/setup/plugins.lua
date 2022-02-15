@@ -122,6 +122,12 @@ return packer.startup(function(use)
 	-- Surround
 	use("blackCauldron7/surround.nvim")
 
+	-- Yabs => code runner
+	use({
+		"pianocomposer321/yabs.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
