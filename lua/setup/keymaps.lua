@@ -26,8 +26,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-keymap("n", "<leader>e", ":Lex 20<cr>", opts)
-
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -38,9 +36,13 @@ keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+keymap("n", "<leader>w", ":w<CR>", opts)
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jj", "<ESC>", opts)
+keymap("i", ";;", "<Esc>A;<Esc>", opts)
+keymap("i", ",,", "<Esc>A,<Esc>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -83,3 +85,4 @@ keymap("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 
 -- Yabs code runners
 keymap("n", "<F10>", ":lua require('yabs'):run_task('run')<CR>", opts)
+keymap("n", "<F9>", ":lua require('yabs'):run_task('build')<CR>", opts)

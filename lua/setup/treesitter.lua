@@ -15,7 +15,7 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "" } },
+	indent = { enable = false, disable = { "" } },
 
 	rainbow = {
 		enable = true,

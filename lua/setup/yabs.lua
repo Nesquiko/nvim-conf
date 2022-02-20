@@ -3,15 +3,26 @@ if not status_ok then
 	return
 end
 
-local code_runner = _CODE_RUNNER
-
 local config = {
 	languages = {
 		python = {
 			tasks = {
 				run = {
 					command = "python3.10 %",
-					output = code_runner,
+					output = _CODE_RUNNER,
+				},
+			},
+		},
+
+		go = {
+			tasks = {
+				run = {
+					command = "go run .",
+					output = _CODE_RUNNER,
+				},
+				build = {
+					command = "go build .",
+					output = _CODE_RUNNER,
 				},
 			},
 		},
@@ -20,7 +31,7 @@ local config = {
 			tasks = {
 				run = {
 					command = "",
-					output = code_runner,
+					output = _CODE_RUNNER,
 				},
 			},
 		},

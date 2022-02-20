@@ -78,9 +78,6 @@ local config = {
 			autobuild = {
 				enabled = false,
 			},
-			project = {
-				outputPath = "abcd",
-			},
 		},
 		sources = {
 			organizeImports = {
