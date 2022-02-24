@@ -31,6 +31,11 @@ lsp_installer.on_server_ready(function(server)
 		opts = vim.tbl_deep_extend("force", go_opts, opts)
 	end
 
+	if server.name == "groovyls" then
+		local groovy_opts = require("setup.lsp.settings.groovyls")
+		opts = vim.tbl_deep_extend("force", groovy_opts, opts)
+	end
+
 	if server.name == "jdtls" then
 		return
 	end

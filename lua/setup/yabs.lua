@@ -27,6 +27,19 @@ local config = {
 			},
 		},
 
+		java = {
+			tasks = {
+				run = {
+					command = "gradle run",
+					output = _CODE_RUNNER,
+				},
+				build = {
+					command = "gradle build",
+					output = _CODE_RUNNER,
+				},
+			},
+		},
+
 		toggleterm = {
 			tasks = {
 				run = {
