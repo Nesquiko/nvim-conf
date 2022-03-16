@@ -5,6 +5,8 @@ end
 
 local jdtls_home = os.getenv("JDTLS_HOME")
 local workspace_path = os.getenv("WORKSPACE")
+local debuggers = os.getenv("HOME") .. "/.local/share/nvim/debuggers"
+
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = workspace_path .. project_name
 
@@ -17,6 +19,13 @@ end
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
+local bundles = {
+	vim.fn.glob(
+		debuggers .. "/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+	),
+}
+vim.list_extend(bundles, vim.split(vim.fn.glob(debuggers .. "/vscode-java-test/server/*.jar"), "\n"))
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -101,7 +110,7 @@ local config = {
 	--
 	-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
 	init_options = {
-		bundles = {},
+		bundles = bundles,
 	},
 }
 -- This starts a new client & server,

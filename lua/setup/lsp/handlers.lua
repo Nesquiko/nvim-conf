@@ -93,6 +93,12 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
+	if client.name == "jdt.ls" then
+		require("jdtls").setup_dap({})
+		require("jdtls.setup").add_commands()
+		require("jdtls.dap").setup_dap_main_class_configs()
+	end
+
 	vim.cmd([[
 	       augroup LspFormatting
 	           autocmd! * <buffer>
