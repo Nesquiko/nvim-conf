@@ -10,4 +10,5 @@ My personal neovim config.
     - directory for plugin config files
 - ftplugin
     - needed for java lsp
-
+-  lua/debuger
+    - setup for NVIM-DAP
