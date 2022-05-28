@@ -3,6 +3,8 @@ if not status_ok then
 	return
 end
 
+print("is this called")
+
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
@@ -39,10 +41,6 @@ lsp_installer.on_server_ready(function(server)
 	if server.name == "dockerls" then
 		local dockerls_opts = require("setup.lsp.settings.dockerls")
 		opts = vim.tbl_deep_extend("force", dockerls_opts, opts)
-	end
-
-	if server.name == "jdtls" then
-		return
 	end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
