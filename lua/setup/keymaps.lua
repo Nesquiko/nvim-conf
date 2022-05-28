@@ -89,8 +89,8 @@ keymap("v", ">", ">gv", opts)
 
 -- Maintain the cursor position when yanking a visual selection
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
-keymap("v", "y", "myy`hay")
-keymap("v", "Y", "myY`y")
+keymap("v", "y", "myy`hay", opts)
+keymap("v", "Y", "myY`y", opts)
 
 -- Does not yank after selecting and pasting
 keymap("v", "p", '"_dP', opts)
