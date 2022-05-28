@@ -1,5 +1,18 @@
-local opts = { noremap = true, silent = true }
+-- keymaps.lua
+-- File for non-plugin remappings and keymap options.
+--
+-- TODO:
+--      - move plugin specific keymaps to their config files
+--
+-- Modes:
+--   norma_mode = "n",
+--   insert_mode = "i",
+--   visual_mode = "v",
+--   visual_block_mode = "x",
+--   term_mode = "t",
+--   command_mode = "c"
 
+local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
@@ -10,16 +23,9 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   norma_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",l
+-- ########## Normal ########## --
 
--- Normal --
--- Better window navigation
+-- Switching between windows
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -32,9 +38,10 @@ keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<A-l>", ":bnext<CR>", opts)
+keymap("n", "<A-h>", ":bprevious<CR>", opts)
 
+-- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- Telescope
@@ -69,25 +76,29 @@ keymap("n", "<F17>", ":lua require('dap').step_out()<CR>", opts)
 keymap("n", "<F6>", ":lua require('dap').step_over()<CR>", opts)
 keymap("n", "<F4>", ":lua require('dap').repl.open()<CR>", opts)
 
--- Insert --
-keymap("i", "jj", "<ESC>", opts)
-keymap("i", ";;", "<Esc>A;<Esc>", opts)
-keymap("i", ",,", "<Esc>A,<Esc>", opts)
+-- ########## Insert ########## --
 
--- Visual --
--- Stay in indent mode
+-- Escape is too far away...
+keymap("i", "jj", "<ESC>", opts)
+
+-- ########## Visual ########## --
+
+-- Stay in indent mode when indenting
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Maintain the cursor position when yanking a visual selection
+-- http://ddrscott.github.io/blog/2016/yank-without-jank/
+keymap("v", "y", "myy`hay")
+keymap("v", "Y", "myY`y")
 
 -- Does not yank after selecting and pasting
 keymap("v", "p", '"_dP', opts)
 
--- Visual Block --
--- Move text up and down
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+-- ########## Visual Block ########## --
 
--- Terminal --
+-- ########## Terminal ########## --
+
 -- Better terminal navigation
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
