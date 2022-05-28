@@ -39,7 +39,7 @@ require("setup.debugger")
 
 file:close()
 if wasError then
-	vim.notify("An error occured, see logs for error info")
+	vim.notify("An error occured, see logs in " .. data .. "/log for error info")
 else
 	os.remove(file_name)
 end
