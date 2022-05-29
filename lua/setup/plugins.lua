@@ -1,3 +1,6 @@
+-- plugins.lua
+-- File for Packer plugin management
+
 local fn = vim.fn
 
 -- Automatically install packer
@@ -11,8 +14,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"https://github.com/wbthomason/packer.nvim",
 		install_path,
 	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
+	print("Installing packer, close and reopen Neovim...")
+	vim.cmd("packadd packer.nvim")
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -40,7 +43,6 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -54,8 +56,8 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons") -- better icons
 
 	-- Colorschemes
-	use("lunarvim/darkplus.nvim")
-	-- use "lunarvim/onedarker.nvim"
+	-- use("lunarvim/darkplus.nvim")
+	-- use("lunarvim/onedarker.nvim")
 	use("folke/tokyonight.nvim")
 
 	-- CMP
@@ -64,8 +66,8 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lua")
+	use("hrsh7th/cmp-nvim-lsp") -- source for neovim's built-in lsp
+	use("hrsh7th/cmp-nvim-lua") -- source for neovim's Lua api
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -73,7 +75,7 @@ return packer.startup(function(use)
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installere
+	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -103,9 +105,6 @@ return packer.startup(function(use)
 
 	-- ToggleTerm
 	use("akinsho/toggleterm.nvim")
-
-	-- Java LSP JDTLS
-	use("mfussenegger/nvim-jdtls")
 
 	-- Project
 	use("ahmedkhalf/project.nvim")
