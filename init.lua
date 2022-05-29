@@ -15,8 +15,13 @@ if not ok and file then
 	file:write("setup.keymaps:\n" .. err .. "\n")
 end
 
+ok, err = pcall(require, "setup.options")
+if not ok and file then
+	wasError = true
+	file:write("setup.options:\n" .. err .. "\n")
+end
+
 require("setup.plugins")
-require("setup.options")
 require("setup.cmp")
 require("setup.lsp")
 require("setup.colorscheme")
