@@ -1,15 +1,18 @@
-local colorscheme = "tokyonight"
---local colorscheme = "darkplus"
+-- colorscheme.lua
+-- File for configuring neovim colortheme.
 
-local status_ok, tokyonight = pcall(require, "tokyonight")
-if status_ok then
+-- tokyonight specific settings
+-- MUST be called before setting colorscheme with vim cmd!
+local ok, _ = pcall(require, "tokyonight")
+if ok then
 	vim.g.tokyonight_style = "night"
 	vim.g.tokyonight_italic_comments = false
 	vim.g.tokyonight_italic_keywords = false
+	vim.g.tokyonight_italic_functions = false
+	vim.g.tokyonight_italic_variables = false
 end
 
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-	vim.notify("colorscheme " .. colorscheme .. " not found!")
-	return
-end
+local colorscheme = "tokyonight"
+
+-- tries to set colorscheme with vim cmd
+vim.cmd("colorscheme " .. colorscheme)

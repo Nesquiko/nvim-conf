@@ -27,9 +27,14 @@ if not ok and file then
 	file:write("setup.plugins:\n" .. err .. "\n")
 end
 
+ok, err = pcall(require, "setup.colorscheme")
+if not ok and file then
+	wasError = true
+	file:write("setup.colorscheme:\n" .. err .. "\n")
+end
+
 require("setup.cmp")
 require("setup.lsp")
-require("setup.colorscheme")
 require("setup.telescope")
 require("setup.treesitter")
 require("setup.autopairs")
