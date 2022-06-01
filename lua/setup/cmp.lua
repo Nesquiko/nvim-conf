@@ -1,12 +1,8 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
+-- cmp.lua
+-- File for configuring completion options in neovim.
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
-end
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -16,6 +12,7 @@ local check_backspace = function()
 end
 
 --   פּ ﯟ   some other good icons
+-- find more here: https://www.nerdfonts.com/cheat-sheet
 local kind_icons = {
 	Text = "",
 	Method = "m",
@@ -43,7 +40,6 @@ local kind_icons = {
 	Operator = "",
 	TypeParameter = "",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup({
 	snippet = {
@@ -52,19 +48,31 @@ cmp.setup({
 		end,
 	},
 	mapping = {
+		-- horizontal scrolling
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
+
+		-- horizontal scrolling inside a preview window
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+
+		-- pull up completions
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+
+		-- close completion window
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
+
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
+
+		-- super-tab functionality
+		-- cycle through completions, expands and jumps in luasnippet
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -81,6 +89,9 @@ cmp.setup({
 			"i",
 			"s",
 		}),
+
+		-- super-tab functionality, reversed
+		-- cycle through completions, expands and jumps in luasnippet
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
@@ -94,12 +105,17 @@ cmp.setup({
 			"s",
 		}),
 	},
+
 	formatting = {
+		-- order of items in cmp window
 		fields = { "kind", "abbr", "menu" },
+
+		-- display options for entries in cmp window
 		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- shows icon and kind
+			vim_item.kind = string.format("%s", kind_icons[vim_item.kind]) -- shows only icon
+
+			-- naming for sources
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[NVIM_LUA]",
@@ -114,19 +130,20 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
-		{ name = "buffer" },
 		{ name = "path" },
+		{ name = "buffer" },
 	},
 	confirm_opts = {
-		behavior = cmp.ConfirmBehavior.Replace,
+		behavior = cmp.ConfirmBehavior.Insert,
 		select = false,
 	},
-    window = {
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	}},
+	window = {
+		documentation = {
+			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		},
+	},
 	experimental = {
-		ghost_text = false,
+		ghost_text = true,
 		native_menu = false,
 	},
 })

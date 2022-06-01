@@ -33,7 +33,12 @@ if not ok and file then
 	file:write("setup.colorscheme:\n" .. err .. "\n")
 end
 
-require("setup.cmp")
+ok, err = pcall(require, "setup.cmp")
+if not ok and file then
+	wasError = true
+	file:write("setup.cmp:\n" .. err .. "\n")
+end
+
 require("setup.lsp")
 require("setup.telescope")
 require("setup.treesitter")
