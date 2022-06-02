@@ -1,9 +1,6 @@
 -- keymaps.lua
 -- File for non-plugin remappings and keymap options.
 --
--- TODO:
---      - move plugin specific keymaps to their config files
---
 -- Modes:
 --   norma_mode = "n",
 --   insert_mode = "i",
