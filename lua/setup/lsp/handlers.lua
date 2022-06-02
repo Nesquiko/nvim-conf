@@ -1,6 +1,9 @@
+-- handlers.lua
+-- File for setting server options, such as on_attach,
+-- keymaps, capabilities...
+
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -14,8 +17,7 @@ M.setup = function()
 	end
 
 	local config = {
-		-- disable virtual text
-		virtual_text = false,
+		virtual_text = false, -- shows error message at the end of an line in which it occured
 		-- show signs
 		signs = {
 			active = signs,
@@ -81,7 +83,7 @@ local function lsp_keymaps(bufnr)
 		opts
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+	vim.cmd("command! Format execute 'lua vim.lsp.buf.formatting()'")
 end
 
 M.on_attach = function(client, bufnr)
@@ -91,12 +93,6 @@ M.on_attach = function(client, bufnr)
 
 	if client.name == "sumneko_lua" then
 		client.resolved_capabilities.document_formatting = false
-	end
-
-	if client.name == "jdt.ls" then
-		require("jdtls").setup_dap({})
-		require("jdtls.setup").add_commands()
-		require("jdtls.dap").setup_dap_main_class_configs()
 	end
 
 	vim.cmd([[
@@ -113,10 +109,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	return
-end
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
@@ -149,6 +142,6 @@ function M.remove_augroup(name)
 	end
 end
 
-vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("setup.lsp.handlers").toggle_format_on_save()' ]])
+vim.cmd("command! LspToggleAutoFormat execute 'lua require(\"setup.lsp.handlers\").toggle_format_on_save()'")
 
 return M

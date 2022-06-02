@@ -1,3 +1,6 @@
+-- sumneko_lua.lua
+-- settings for sumneko_lua LSP
+
 return {
 	settings = {
 

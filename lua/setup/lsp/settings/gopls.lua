@@ -1,3 +1,6 @@
+-- gopls.lua
+-- settings for gopls LSP
+
 return {
 	cmd = { "gopls", "serve" },
 	settings = {
