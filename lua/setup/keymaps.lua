@@ -15,6 +15,11 @@ local term_opts = { silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
+-- function for other plugins to register keybind
+function Register_keybind(mode, key_map, action)
+	keymap(mode, key_map, action, opts)
+end
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -40,10 +45,6 @@ keymap("n", "<A-h>", ":bprevious<CR>", opts)
 
 -- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
-
--- Telescope
-keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>lg", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)

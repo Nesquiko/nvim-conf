@@ -1,13 +1,14 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-	return
-end
+-- telescope.lua
+-- Config file for telescope.nvim plugin.
 
+local telescope = require("telescope")
 local actions = require("telescope.actions")
+
+Register_keybind("n", "<leader>f", "<cmd>Telescope find_files<CR>")
+Register_keybind("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
@@ -47,6 +48,7 @@ telescope.setup({
 			n = {
 				["<C-c>"] = actions.close,
 				["<esc>"] = actions.close,
+				["q"] = actions.close,
 				["<CR>"] = actions.select_default,
 				["<C-x>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,

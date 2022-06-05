@@ -45,7 +45,12 @@ if not ok and file then
 	file:write("setup.lsp:\n" .. err .. "\n")
 end
 
-require("setup.telescope")
+ok, err = pcall(require, "setup.telescope")
+if not ok and file then
+	wasError = true
+	file:write("setup.telescope:\n" .. err .. "\n")
+end
+
 require("setup.treesitter")
 require("setup.autopairs")
 require("setup.comment")
