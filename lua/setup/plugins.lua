@@ -55,6 +55,7 @@ return packer.startup(function(use)
 	-- Colorschemes
 	-- use("lunarvim/darkplus.nvim")
 	-- use("lunarvim/onedarker.nvim")
+	use("akai54/2077.nvim")
 	use("folke/tokyonight.nvim")
 
 	-- CMP
