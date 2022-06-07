@@ -57,7 +57,12 @@ if not ok and file then
 	file:write("setup.treesitter:\n" .. err .. "\n")
 end
 
-require("setup.autopairs")
+ok, err = pcall(require, "setup.autopairs")
+if not ok and file then
+	wasError = true
+	file:write("setup.autopairs:\n" .. err .. "\n")
+end
+
 require("setup.comment")
 require("setup.gitsigns")
 require("setup.nvim-tree")
