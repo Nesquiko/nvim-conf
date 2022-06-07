@@ -51,7 +51,12 @@ if not ok and file then
 	file:write("setup.telescope:\n" .. err .. "\n")
 end
 
-require("setup.treesitter")
+ok, err = pcall(require, "setup.treesitter")
+if not ok and file then
+	wasError = true
+	file:write("setup.treesitter:\n" .. err .. "\n")
+end
+
 require("setup.autopairs")
 require("setup.comment")
 require("setup.gitsigns")

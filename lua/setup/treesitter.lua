@@ -1,7 +1,8 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-	return
-end
+-- treesitter.language
+-- File for configuring treesitter.
+-- Also a config for nvim-ts-rainbow is in table called rainbow.
+
+local configs = require("nvim-treesitter.configs")
 
 configs.setup({
 	ensure_installed = "all",
