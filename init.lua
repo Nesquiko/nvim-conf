@@ -63,7 +63,12 @@ if not ok and file then
 	file:write("setup.autopairs:\n" .. err .. "\n")
 end
 
-require("setup.comment")
+ok, err = pcall(require, "setup.comment")
+if not ok and file then
+	wasError = true
+	file:write("setup.comment:\n" .. err .. "\n")
+end
+
 require("setup.gitsigns")
 require("setup.nvim-tree")
 require("setup.bufferline")

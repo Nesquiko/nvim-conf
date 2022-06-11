@@ -1,8 +1,7 @@
-local status_ok, comment = pcall(require, "Comment")
-if not status_ok then
-	print("Comment plugin was not found.")
-	return
-end
+-- comment.lua
+-- Config file for numToStr/Comment.nvim plugin.
+
+local comment = require("Comment")
 
 comment.setup({
 	pre_hook = function(ctx)
