@@ -69,7 +69,12 @@ if not ok and file then
 	file:write("setup.comment:\n" .. err .. "\n")
 end
 
-require("setup.gitsigns")
+ok, err = pcall(require, "setup.gitsigns")
+if not ok and file then
+	wasError = true
+	file:write("setup.gitsigns:\n" .. err .. "\n")
+end
+
 require("setup.nvim-tree")
 require("setup.bufferline")
 require("setup.lualine")
