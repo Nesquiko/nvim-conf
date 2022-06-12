@@ -1,16 +1,14 @@
+-- nvim-tree.lua
+-- Config file for kyazdani42/nvim-tree.lua.
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-	return
-end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-	return
-end
-
+local nvim_tree = require("nvim-tree")
+local nvim_tree_config = require("nvim-tree.config")
 local tree_cb = nvim_tree_config.nvim_tree_callback
+
+Register_keybind("n", "<leader>e", ":NvimTreeToggle<cr>")
+Register_keybind("n", "<leader>E", ":NvimTreeFocus<cr>")
 
 nvim_tree.setup({
 	disable_netrw = true,
@@ -21,9 +19,8 @@ nvim_tree.setup({
 		"dashboard",
 		"alpha",
 	},
-	-- auto_close = true,
 	open_on_tab = false,
-	hijack_cursor = false,
+	hijack_cursor = true,
 	update_cwd = true,
 	update_to_buf_dir = {
 		enable = true,
@@ -69,10 +66,10 @@ nvim_tree.setup({
 		add_trailing = false,
 		group_empty = false,
 		highlight_git = false,
-		highlight_opened_files = "none",
+		highlight_opened_files = "all", -- none, icon, name, all
 		root_folder_modifier = ":t",
 		indent_markers = {
-			enable = false,
+			enable = true,
 			icons = {
 				corner = "└ ",
 				edge = "│ ",

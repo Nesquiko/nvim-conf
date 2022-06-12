@@ -46,10 +46,6 @@ keymap("n", "<A-h>", ":bprevious<CR>", opts)
 -- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
 
--- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-keymap("n", "<leader>E", ":NvimTreeFocus<cr>", opts)
-
 -- Bufferline
 keymap("n", "<c-w>", ":Bdelete %<CR>", opts)
 

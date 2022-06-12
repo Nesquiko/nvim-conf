@@ -75,7 +75,12 @@ if not ok and file then
 	file:write("setup.gitsigns:\n" .. err .. "\n")
 end
 
-require("setup.nvim-tree")
+ok, err = pcall(require, "setup.nvim-tree")
+if not ok and file then
+	wasError = true
+	file:write("setup.nvim-tree:\n" .. err .. "\n")
+end
+
 require("setup.bufferline")
 require("setup.lualine")
 require("setup.toggleterm")
