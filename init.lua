@@ -81,7 +81,12 @@ if not ok and file then
 	file:write("setup.nvim-tree:\n" .. err .. "\n")
 end
 
-require("setup.bufferline")
+ok, err = pcall(require, "setup.bufferline")
+if not ok and file then
+	wasError = true
+	file:write("setup.bufferline:\n" .. err .. "\n")
+end
+
 require("setup.lualine")
 require("setup.toggleterm")
 require("setup.project")

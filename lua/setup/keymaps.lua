@@ -46,9 +46,6 @@ keymap("n", "<A-h>", ":bprevious<CR>", opts)
 -- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
 
--- Bufferline
-keymap("n", "<c-w>", ":Bdelete %<CR>", opts)
-
 -- Null-ls format
 keymap("n", "<leader>ll", ":Format<CR>", opts)
 
