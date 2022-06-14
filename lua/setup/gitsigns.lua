@@ -4,9 +4,9 @@
 local gitsigns = require("gitsigns")
 
 -- keymaps
-Register_keybind("n", "<leader>n", "<cmd>Gitsigns next_hunk<CR>")
-Register_keybind("n", "<leader>p", "<cmd>Gitsigns prev_hunk<CR>")
-Register_keybind("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>")
+Register_keybind("n", "<A-n>", "<cmd>Gitsigns next_hunk<CR>")
+Register_keybind("n", "<A-p>", "<cmd>Gitsigns prev_hunk<CR>")
+Register_keybind("n", "gp", "<cmd>Gitsigns preview_hunk<CR>")
 Register_keybind("n", "<leader>dt", "<cmd>Gitsigns diffthis<CR>")
 Register_keybind("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<CR>")
 Register_keybind("n", "<leader>ush", "<cmd>Gitsigns undo_stage_hunk<CR>")

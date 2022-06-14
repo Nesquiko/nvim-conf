@@ -1,8 +1,8 @@
 -- colorscheme.lua
 -- File for configuring neovim colortheme.
 
--- local colorscheme = "tokyonight"
-local colorscheme = "2077"
+local colorscheme = "tokyonight"
+-- local colorscheme = "2077"
 
 if colorscheme == "tokyonight" then
 	-- tokyonight specific settings
