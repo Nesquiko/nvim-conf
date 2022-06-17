@@ -96,3 +96,7 @@ function _CODE_RUNNER(command)
 		terminal_runner:close()
 	end
 end
+
+Register_keybind("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>")
+Register_keybind("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>")
+Register_keybind("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>")

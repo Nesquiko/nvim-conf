@@ -46,14 +46,6 @@ keymap("n", "<A-h>", ":bprevious<CR>", opts)
 -- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
 
--- Null-ls format
-keymap("n", "<leader>ll", ":Format<CR>", opts)
-
--- ToggleTerm
-keymap("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>", opts)
-keymap("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>", opts)
-keymap("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
-
 -- Yabs code runners
 keymap("n", "<F10>", ":lua require('yabs'):run_task('run')<CR>", opts)
 keymap("n", "<F9>", ":lua require('yabs'):run_task('build')<CR>", opts)
