@@ -87,8 +87,13 @@ if not ok and file then
 	file:write("setup.bufferline:\n" .. err .. "\n")
 end
 
+ok, err = pcall(require, "setup.toggleterm")
+if not ok and file then
+	wasError = true
+	file:write("setup.toggleterm:\n" .. err .. "\n")
+end
+
 require("setup.lualine")
-require("setup.toggleterm")
 require("setup.project")
 require("setup.impatient")
 require("setup.indent-blankline")

@@ -1,9 +1,21 @@
-local status_ok, toggleterm = pcall(require, "toggleterm")
-if not status_ok then
-	return
-end
+-- toggleterm.lua
+-- Config file for akinsho/toggleterm.nvim
+--
+-- KEYMAPS:
+-- CTRL + \ => opens new floating terminal, which can be toggled
+-- CTRL + g => opens new floating terminal with lazygit
+-- CTRL + p => opens new floating terminal with python shell
+-- CTRL + t => opens new floating terminal with htop
+-- CTRL + F5 => toggles _CODE_RUNNER terminal, @see yabs.lua
+--
+-- Also there is a toggle function for terminal with NCDU
+--
+-- _CODE_RUNNER is function for spawning hidden terminals
+-- with build/run commands.
 
-local size = 70
+local toggleterm = require("toggleterm")
+
+local size = 80
 local direction = "float"
 
 toggleterm.setup({
@@ -33,6 +45,8 @@ function _G.set_terminal_keymaps()
 	local opts = { noremap = true }
 	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "jj", [[<C-\><C-n>]], opts)
+	-- these navigate to different window, without closing the terminal
+	-- NOTE: doesnt make sense for float, works in horizonatl and vertical
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
@@ -41,44 +55,37 @@ end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local terminal = require("toggleterm.terminal").Terminal
 
+local lazygit = terminal:new({ cmd = "lazygit", hidden = true })
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
+Register_keybind("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>")
 
-local node = Terminal:new({ cmd = "node", hidden = true })
-
-function _NODE_TOGGLE()
-	node:toggle()
-end
-
-local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
-
+local ncdu = terminal:new({ cmd = "ncdu", hidden = true })
 function _NCDU_TOGGLE()
 	ncdu:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", hidden = true, direction = "float" })
-
+local htop = terminal:new({ cmd = "htop", hidden = true })
 function _HTOP_TOGGLE()
 	htop:toggle()
 end
+Register_keybind("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>")
 
-local python = Terminal:new({ cmd = "python3", hidden = true })
-
+local python = terminal:new({ cmd = "python3", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
+Register_keybind("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>")
 
+local terminal_runner = nil
 function _CODE_RUNNER(command)
-	local terminal_handler = require("toggleterm.terminal")
-	local terminal_id = 0
+	local terminal_id = 10
 
-	local terminal_runner = terminal_handler.get(terminal_id)
 	if terminal_runner == nil then
-		terminal_runner = Terminal:new({
+		terminal_runner = terminal:new({
 			count = terminal_id, -- something like an ID
 			direction = direction,
 			hidden = true,
@@ -89,14 +96,13 @@ function _CODE_RUNNER(command)
 		})
 	end
 
-	if not terminal_runner:is_open() then
-		terminal_runner:open(size, direction)
-		terminal_runner:send(command)
-	else
-		terminal_runner:close()
-	end
+	terminal_runner:open(size, direction)
+	terminal_runner:send(command)
 end
 
-Register_keybind("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>")
-Register_keybind("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>")
-Register_keybind("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>")
+function _TOGGLE_CODE_RUNNER()
+	if not (terminal_runner == nil) then
+		terminal_runner:toggle()
+	end
+end
+Register_keybind("n", "<F34>", ":lua _TOGGLE_CODE_RUNNER()<CR>") -- CTRL + F10 == F34
