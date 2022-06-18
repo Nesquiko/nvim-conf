@@ -99,13 +99,18 @@ if not ok and file then
 	file:write("setup.lualine:\n" .. err .. "\n")
 end
 
-require("setup.project")
+ok, err = pcall(require, "setup.project")
+if not ok and file then
+	wasError = true
+	file:write("setup.project:\n" .. err .. "\n")
+end
+
 require("setup.impatient")
 require("setup.indent-blankline")
 require("setup.alpha")
 require("setup.surround")
 require("setup.yabs")
-require("setup.debugger")
+-- require("setup.debugger")
 
 file:close()
 if wasError then
