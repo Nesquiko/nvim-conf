@@ -93,7 +93,12 @@ if not ok and file then
 	file:write("setup.toggleterm:\n" .. err .. "\n")
 end
 
-require("setup.lualine")
+ok, err = pcall(require, "setup.lualine")
+if not ok and file then
+	wasError = true
+	file:write("setup.lualine:\n" .. err .. "\n")
+end
+
 require("setup.project")
 require("setup.impatient")
 require("setup.indent-blankline")

@@ -1,11 +1,25 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-	return
-end
+-- lualine.lua
+-- Config file for nvim-lualine/lualine.nvim
+--
+-- Used componensts:
+-- SECTION_A:
+--	- git branch
+--	- diagnostics, shows erros and warnings (visible only if there are some)
+--
+-- SECTINO_B:
+-- 	- current vim mode
+--
+-- SECTION_X:
+-- 	- git diff of current buffer
+-- 	- current filetype of buffer
+--
+-- SECTION_Y:
+--	- location of cursor in buffer
+--
+-- SECTION_Z:
+--	- progress, how deep the location is in current buffer
 
-local hide_in_width = function()
-	return vim.fn.winwidth(0) > 80
-end
+local lualine = require("lualine")
 
 local diagnostics = {
 	"diagnostics",
@@ -14,27 +28,22 @@ local diagnostics = {
 	symbols = { error = " ", warn = " " },
 	colored = false,
 	update_in_insert = false,
-	always_visible = true,
+	always_visible = false,
 }
 
 local diff = {
 	"diff",
-	colored = false,
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-	cond = hide_in_width,
+	colored = true,
+	symbols = { added = " ", modified = " ", removed = " " },
 }
 
 local mode = {
 	"mode",
-	fmt = function(str)
-		return "-- " .. str .. " --"
-	end,
 }
 
 local filetype = {
 	"filetype",
 	icons_enabled = true,
-	icon = nil,
 }
 
 local branch = {
@@ -48,7 +57,6 @@ local location = {
 	padding = 0,
 }
 
--- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
@@ -58,16 +66,12 @@ local progress = function()
 	return chars[index]
 end
 
-local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
-
 lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
 	},
@@ -75,18 +79,17 @@ lualine.setup({
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_x = { diff, filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},
 	inactive_sections = {
-		lualine_a = {},
+		lualine_a = { branch, diagnostics },
 		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
+		lualine_c = {},
+		lualine_x = { diff, filetype },
+		lualine_y = { location },
+		lualine_z = { progress },
 	},
 	tabline = {},
 	extensions = {},
