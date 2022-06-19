@@ -4,8 +4,8 @@
 -- file is created in ./log dir.
 
 require("core.log")
-local data = vim.fn.stdpath("data")
-local file_name = data .. "/log/" .. Get_date_time() .. ".log"
+local log_cache = vim.fn.stdpath("cache") .. "/plugin_log"
+local file_name = log_cache .. Get_date_time() .. ".log"
 local file = io.open(file_name, "a")
 local wasError = false
 
@@ -119,7 +119,7 @@ require("setup.yabs")
 
 file:close()
 if wasError then
-	vim.notify("An error occured, see logs in " .. data .. "/log for error info")
+	vim.notify("An error occured, see logs in " .. log_cache .. " for error info")
 else
 	os.remove(file_name)
 end
