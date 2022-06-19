@@ -123,7 +123,6 @@ if not ok and file then
 	file:write("setup.alpha:\n" .. err .. "\n")
 end
 
-require("setup.surround")
 require("setup.yabs")
 -- require("setup.debugger")
 

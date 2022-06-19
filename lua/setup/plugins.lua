@@ -116,9 +116,6 @@ return packer.startup(function(use)
 	-- Alpha
 	use("goolord/alpha-nvim")
 
-	-- Surround
-	use("blackCauldron7/surround.nvim")
-
 	-- Yabs => code runner
 	use({
 		"pianocomposer321/yabs.nvim",
