@@ -117,7 +117,12 @@ if not ok and file then
 	file:write("setup.indent-blankline:\n" .. err .. "\n")
 end
 
-require("setup.alpha")
+ok, err = pcall(require, "setup.alpha")
+if not ok and file then
+	wasError = true
+	file:write("setup.alpha:\n" .. err .. "\n")
+end
+
 require("setup.surround")
 require("setup.yabs")
 -- require("setup.debugger")
