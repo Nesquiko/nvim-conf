@@ -105,7 +105,12 @@ if not ok and file then
 	file:write("setup.project:\n" .. err .. "\n")
 end
 
-require("setup.impatient")
+ok, err = pcall(require, "setup.impatient")
+if not ok and file then
+	wasError = true
+	file:write("setup.impatient:\n" .. err .. "\n")
+end
+
 require("setup.indent-blankline")
 require("setup.alpha")
 require("setup.surround")
