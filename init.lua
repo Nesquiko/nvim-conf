@@ -4,7 +4,7 @@
 -- file is created in ./log dir.
 
 require("core.log")
-local log_cache = vim.fn.stdpath("cache") .. "/plugin_log"
+local log_cache = vim.fn.stdpath("cache") .. "/plugin_log/"
 local file_name = log_cache .. Get_date_time() .. ".log"
 local file = io.open(file_name, "a")
 local wasError = false
@@ -123,7 +123,12 @@ if not ok and file then
 	file:write("setup.alpha:\n" .. err .. "\n")
 end
 
-require("setup.yabs")
+ok, err = pcall(require, "setup.yabs")
+if not ok and file then
+	wasError = true
+	file:write("setup.yabs:\n" .. err .. "\n")
+end
+
 -- require("setup.debugger")
 
 file:close()

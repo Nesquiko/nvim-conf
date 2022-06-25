@@ -1,7 +1,13 @@
-local status_ok, yabs = pcall(require, "yabs")
-if not status_ok then
-	return
-end
+-- yabs.lua
+-- Config file for pianocomposer321/yabs.nvim
+--
+-- CURRENTLY_SUPPORTED_LANGS:
+-- 	- Python
+-- 	- Golang
+--
+-- Display tasks in Telescope with ALT + t
+local yabs = require("yabs")
+Register_keybind("n", "<A-t>", "<cmd>Telescope yabs tasks<CR>")
 
 local config = {
 	languages = {
@@ -22,28 +28,6 @@ local config = {
 				},
 				build = {
 					command = "go build .",
-					output = _CODE_RUNNER,
-				},
-			},
-		},
-
-		java = {
-			tasks = {
-				run = {
-					command = "gradle run",
-					output = _CODE_RUNNER,
-				},
-				build = {
-					command = "gradle build",
-					output = _CODE_RUNNER,
-				},
-			},
-		},
-
-		toggleterm = {
-			tasks = {
-				run = {
-					command = "",
 					output = _CODE_RUNNER,
 				},
 			},
