@@ -22,10 +22,6 @@ nvim_tree.setup({
 	open_on_tab = false,
 	hijack_cursor = true,
 	update_cwd = true,
-	update_to_buf_dir = {
-		enable = true,
-		auto_open = true,
-	},
 	diagnostics = {
 		enable = true,
 		icons = {
@@ -50,7 +46,6 @@ nvim_tree.setup({
 		height = 30,
 		hide_root_folder = false,
 		side = "left",
-		auto_resize = true,
 		mappings = {
 			custom_only = false,
 			list = {
