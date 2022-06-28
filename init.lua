@@ -3,30 +3,29 @@
 -- so if one plugin fails, nvim is still loaded. When an error occurs, a log
 -- file is created in ./log dir.
 
+require("core.keymaps")
+require("core.options")
+
+require("plugin.packer")
 local plugin_loader = require("core.config_loader")
-
-local ok, err = pcall(require, "setup.keymaps")
-ok, err = pcall(require, "setup.options")
-ok, err = pcall(require, "setup.plugins")
-
 plugin_loader:load_configs({
-	"setup.colorscheme",
-	"setup.cmp",
-	"setup.lsp",
-	"setup.telescope",
-	"setup.treesitter",
-	"setup.autopairs",
-	"setup.comment",
-	"setup.gitsigns",
-	"setup.nvim-tree",
-	"setup.bufferline",
-	"setup.toggleterm",
-	"setup.lualine",
-	"setup.project",
-	"setup.impatient",
-	"setup.indent-blankline",
-	"setup.alpha",
-	"setup.yabs",
+	"plugin.config.colorscheme",
+	"plugin.config.cmp",
+	"plugin.config.lsp",
+	"plugin.config.telescope",
+	"plugin.config.treesitter",
+	"plugin.config.autopairs",
+	"plugin.config.comment",
+	"plugin.config.gitsigns",
+	"plugin.config.nvim-tree",
+	"plugin.config.bufferline",
+	"plugin.config.toggleterm",
+	"plugin.config.lualine",
+	"plugin.config.project",
+	"plugin.config.impatient",
+	"plugin.config.indent-blankline",
+	"plugin.config.alpha",
+	"plugin.config.yabs",
 })
 
 -- require("setup.debugger")
