@@ -16,7 +16,7 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- function for other plugins to register keybind
-function Register_keybind(mode, key_map, action)
+function ADD_KEYMAP(mode, key_map, action)
 	keymap(mode, key_map, action, opts)
 end
 
@@ -45,10 +45,6 @@ keymap("n", "<A-h>", ":bprevious<CR>", opts)
 
 -- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
-
--- Yabs code runners
-keymap("n", "<F10>", ":lua require('yabs'):run_task('run')<CR>", opts)
-keymap("n", "<F9>", ":lua require('yabs'):run_task('build')<CR>", opts)
 
 -- DAP
 keymap("n", "<F22>", ":lua require('dap').continue()<CR>", opts)

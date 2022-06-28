@@ -52,4 +52,4 @@ project.setup({
 
 local telescope = require("telescope")
 telescope.load_extension("projects")
-Register_keybind("n", "<leader>p", "<cmd>Telescope projects<CR>")
+ADD_KEYMAP("n", "<leader>p", "<cmd>Telescope projects<CR>")

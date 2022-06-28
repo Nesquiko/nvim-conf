@@ -4,8 +4,8 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 
-Register_keybind("n", "<leader>f", "<cmd>Telescope find_files<CR>")
-Register_keybind("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
+ADD_KEYMAP("n", "<leader>f", "<cmd>Telescope find_files<CR>")
+ADD_KEYMAP("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
 
 telescope.setup({
 	defaults = {

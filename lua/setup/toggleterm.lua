@@ -61,7 +61,7 @@ local lazygit = terminal:new({ cmd = "lazygit", hidden = true })
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
-Register_keybind("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>")
+ADD_KEYMAP("n", "<c-g>", ":lua _LAZYGIT_TOGGLE()<CR>")
 
 local ncdu = terminal:new({ cmd = "ncdu", hidden = true })
 function _NCDU_TOGGLE()
@@ -72,13 +72,13 @@ local htop = terminal:new({ cmd = "htop", hidden = true })
 function _HTOP_TOGGLE()
 	htop:toggle()
 end
-Register_keybind("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>")
+ADD_KEYMAP("n", "<c-t>", ":lua _HTOP_TOGGLE()<CR>")
 
 local python = terminal:new({ cmd = "python3", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
-Register_keybind("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>")
+ADD_KEYMAP("n", "<c-p>", ":lua _PYTHON_TOGGLE()<CR>")
 
 local terminal_runner = nil
 function _CODE_RUNNER(command)
@@ -105,4 +105,4 @@ function _TOGGLE_CODE_RUNNER()
 		terminal_runner:toggle()
 	end
 end
-Register_keybind("n", "<F34>", ":lua _TOGGLE_CODE_RUNNER()<CR>") -- CTRL + F10 == F34
+ADD_KEYMAP("n", "<F34>", ":lua _TOGGLE_CODE_RUNNER()<CR>") -- CTRL + F10 == F34
