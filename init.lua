@@ -1,7 +1,10 @@
 -- init.lua
--- Main config file for nvim. Every initialization is called with in a pcall,
--- so if one plugin fails, nvim is still loaded. When an error occurs, a log
--- file is created in ./log dir.
+--
+-- Main config file for nvim.
+--
+-- RESPONSIBLE_FOR:
+-- 	Loading of non-plugin core config files.
+-- 	Loading of plugin specific config files.
 
 require("core.keymaps")
 require("core.options")
