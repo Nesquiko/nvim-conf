@@ -46,15 +46,6 @@ keymap("n", "<A-h>", ":bprevious<CR>", opts)
 -- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
 
--- DAP
-keymap("n", "<F22>", ":lua require('dap').continue()<CR>", opts)
-keymap("n", "<F23>", ":lua require('dap').terminate()<CR>", opts)
-keymap("n", "<c-b>", ":lua require('dap').toggle_breakpoint()<CR>", opts)
-keymap("n", "<F5>", ":lua require('dap').step_into()<CR>", opts)
-keymap("n", "<F17>", ":lua require('dap').step_out()<CR>", opts)
-keymap("n", "<F6>", ":lua require('dap').step_over()<CR>", opts)
-keymap("n", "<F4>", ":lua require('dap').repl.open()<CR>", opts)
-
 -- ########## Insert ########## --
 
 -- Escape is too far away...

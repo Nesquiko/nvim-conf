@@ -17,3 +17,12 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 require("setup.debugger.nvim-dap-go")
+
+-- DAP
+-- keymap("n", "<F22>", ":lua require('dap').continue()<CR>", opts)
+-- keymap("n", "<F23>", ":lua require('dap').terminate()<CR>", opts)
+-- keymap("n", "<c-b>", ":lua require('dap').toggle_breakpoint()<CR>", opts)
+-- keymap("n", "<F5>", ":lua require('dap').step_into()<CR>", opts)
+-- keymap("n", "<F17>", ":lua require('dap').step_out()<CR>", opts)
+-- keymap("n", "<F6>", ":lua require('dap').step_over()<CR>", opts)
+-- keymap("n", "<F4>", ":lua require('dap').repl.open()<CR>", opts)
