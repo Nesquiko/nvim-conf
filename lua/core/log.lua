@@ -1,3 +1,7 @@
+-- log.lua
+--
+-- A file with basic logger for loading of plugin configs.
+
 local M = {}
 local Logger = { was_error = false }
 
@@ -11,7 +15,12 @@ local function date_time()
 	return result
 end
 
-function M.init()
+-- init creates a new Logger which will (if needed) create logs in logs_dir
+-- directory
+--
+-- @param logs_dir: string - a path to dir, where logs will be saved
+-- @return a Logger object
+function M.init(logs_dir)
 	local log_path = vim.fn.stdpath("cache") .. "/plugin_log/"
 	local file_name = log_path .. date_time() .. ".log"
 	Logger.file_name = file_name
@@ -20,11 +29,16 @@ function M.init()
 	return Logger
 end
 
+-- error saves details about an error which occured in origin
+--
+-- @param origin: string - an origin of the error
+-- @param err: string - an error message which occured
 function Logger:error(origin, err)
 	self.file:write(origin .. ":\n\t" .. err .. "\n")
 	self.was_error = true
 end
 
+-- cleanup cleans resources used during logging
 function Logger:cleanup()
 	self.file:close()
 	if self.wasError then
