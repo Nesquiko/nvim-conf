@@ -15,7 +15,11 @@ local term_opts = { silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
--- function for other plugins to register keybind
+---function for other plugins to register keybind
+---
+---@param mode string in which mode the action will execute
+---@param key_map string button sequence/combination
+---@param action string action which will be executed
 function ADD_KEYMAP(mode, key_map, action)
 	keymap(mode, key_map, action, opts)
 end

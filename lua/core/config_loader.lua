@@ -1,15 +1,14 @@
--- config_loader.lua
---
--- A object for loading plugin configs.
+--- config_loader.lua
+---
+--- A object for loading plugin configs.
 
 local M = {}
 
-local logger = require("core.log").init()
+local logger = require("core.log").init(vim.fn.stdpath("cache") .. "/plugin_log/")
 
--- load_congigs loads a plugin configurations from an array.
---
--- @param configs: Array - an array of relative paths from root dir to the
--- 	plugin configs
+---load_configs loads a plugin configurations from an array.
+---
+---@param configs table an array of relative paths from root dir to the plugin configs
 function M:load_configs(configs)
 	for _, conf in ipairs(configs) do
 		local ok, err = pcall(require, conf)
