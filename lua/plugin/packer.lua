@@ -122,6 +122,8 @@ return packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 
+	use("ray-x/lsp_signature.nvim")
+
 	-- DAP
 	use("mfussenegger/nvim-dap")
 	use("theHamsta/nvim-dap-virtual-text")
