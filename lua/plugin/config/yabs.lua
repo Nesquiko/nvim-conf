@@ -34,6 +34,15 @@ local config = {
 				},
 			},
 		},
+
+		sh = {
+			tasks = {
+				run = {
+					command = "sh %",
+					output = _CODE_RUNNER,
+				},
+			},
+		},
 	},
 
 	-- Not configured filetypes default to this
