@@ -35,6 +35,19 @@ local config = {
 			},
 		},
 
+		javascript = {
+			tasks = {
+				run = {
+					command = "bun run %",
+					output = _CODE_RUNNER,
+				},
+				build = {
+					command = "echo No building settings specified.",
+					output = "echo",
+				},
+			},
+		},
+
 		sh = {
 			tasks = {
 				run = {
