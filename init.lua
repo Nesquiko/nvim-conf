@@ -8,7 +8,6 @@
 
 require("core.keymaps")
 require("core.options")
-
 require("plugin.packer")
 local plugin_loader = require("core.config_loader")
 plugin_loader:load_configs({

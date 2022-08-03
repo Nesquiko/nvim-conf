@@ -18,6 +18,5 @@ My personal neovim config.
 ## Plugins to look at
 
 1. folke/trouble.nvim
-2. lewis6991/satellite.nvim
-3. ThePrimeagen/refactoring.nvim
+2. ThePrimeagen/refactoring.nvim
 	* requires Neovim nightly
