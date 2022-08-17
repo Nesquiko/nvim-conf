@@ -64,7 +64,7 @@ nvim_tree.setup({
 		highlight_opened_files = "all", -- none, icon, name, all
 		root_folder_modifier = ":t",
 		indent_markers = {
-			enable = true,
+			enable = false,
 			icons = {
 				corner = "└ ",
 				edge = "│ ",
