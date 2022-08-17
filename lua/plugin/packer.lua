@@ -124,6 +124,8 @@ return packer.startup(function(use)
 
 	use("ray-x/lsp_signature.nvim")
 
+	use("dstein64/vim-startuptime")
+
 	-- DAP
 	use("mfussenegger/nvim-dap")
 	use("theHamsta/nvim-dap-virtual-text")
