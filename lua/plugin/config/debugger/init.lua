@@ -1,28 +1,25 @@
-require("setup.debugger.nvim-dap-ui")
+-- init.lua
+--
+-- Main configuration file for nvim-dap plugin, used
+-- to launch debugger.
 
-require("nvim-dap-virtual-text").setup()
+require("dap")
 
 vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "", linehl = "", numhl = "" })
 
-local dap, dapui = require("dap"), require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
-end
+ADD_KEYMAP("n", "<C-b>", ":lua require('dap').toggle_breakpoint()<CR>")
+ADD_KEYMAP("n", "<F5>", ":lua require('dap').continue()<CR>")
+ADD_KEYMAP("n", "<F29>", ":lua require('dap').terminate()<CR>")
+ADD_KEYMAP("n", "<F6>", ":lua require('dap').step_into()<CR>")
+ADD_KEYMAP("n", "<F30>", ":lua require('dap').step_out()<CR>")
+ADD_KEYMAP("n", "<F7>", ":lua require('dap').step_over()<CR>")
 
-require("setup.debugger.nvim-dap-go")
+ADD_KEYMAP("n", "<F4>", ":lua require('dap').repl.open()<CR>")
+ADD_KEYMAP("n", "<F28>", ":lua require('dap').repl.close()<CR>")
 
--- DAP
--- keymap("n", "<F22>", ":lua require('dap').continue()<CR>", opts)
--- keymap("n", "<F23>", ":lua require('dap').terminate()<CR>", opts)
--- keymap("n", "<c-b>", ":lua require('dap').toggle_breakpoint()<CR>", opts)
--- keymap("n", "<F5>", ":lua require('dap').step_into()<CR>", opts)
--- keymap("n", "<F17>", ":lua require('dap').step_out()<CR>", opts)
--- keymap("n", "<F6>", ":lua require('dap').step_over()<CR>", opts)
--- keymap("n", "<F4>", ":lua require('dap').repl.open()<CR>", opts)
+require("plugin.config.debugger.dap-events")
+require("plugin.config.debugger.nvim-dap-go")
+require("plugin.config.debugger.virtual-text")
+require("plugin.config.debugger.telescope-ext")
+require("plugin.config.debugger.nvim-dap-ui")

@@ -127,7 +127,8 @@ return packer.startup(function(use)
 	-- DAP
 	use("mfussenegger/nvim-dap")
 	use("theHamsta/nvim-dap-virtual-text")
-	use("rcarriga/nvim-dap-ui")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("nvim-telescope/telescope-dap.nvim")
 
 	-- DAP for Go
 	use("leoluz/nvim-dap-go")

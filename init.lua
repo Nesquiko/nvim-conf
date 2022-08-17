@@ -28,6 +28,7 @@ plugin_loader:load_configs({
 	"plugin.config.indent-blankline",
 	"plugin.config.alpha",
 	"plugin.config.yabs",
+	"plugin.config.debugger",
 })
 
 -- require("setup.debugger")
