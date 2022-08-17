@@ -2,18 +2,10 @@
 
 My personal neovim config.
 
-## Structure
-
-- init.lua
-    - main entry point for neovim, written in Lua
-- lua/setup
-    - directory for plugin config files
-
 ## TODO
 
-1. Escalate plugins.lua to higher dir
-2. automatic lsp installation through lsp-installer
-3. move plugin specific keymaps to their config files
+1. Make a Telescope picker from commads (https://github.com/nvim-telescope/telescope-dap.nvim)
+1. automatic lsp installation through lsp-installer
 
 ## Plugins to look at
 
