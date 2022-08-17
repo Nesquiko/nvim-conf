@@ -4,6 +4,8 @@
 -- CURRENTLY_SUPPORTED_LANGS:
 -- 	- Python
 -- 	- Golang
+-- 	- JS with Bun
+-- 	- Bash
 --
 -- Display tasks in Telescope with ALT + t
 local yabs = require("yabs")

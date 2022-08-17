@@ -6,7 +6,7 @@
 -- CTRL + g => opens new floating terminal with lazygit
 -- CTRL + p => opens new floating terminal with python shell
 -- CTRL + t => opens new floating terminal with htop
--- CTRL + F5 => toggles _CODE_RUNNER terminal, @see yabs.lua
+-- CTRL + F10 => toggles _CODE_RUNNER terminal, @see yabs.lua
 --
 -- Also there is a toggle function for terminal with NCDU
 --
