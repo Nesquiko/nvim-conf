@@ -5,7 +5,8 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 
 ADD_KEYMAP("n", "<leader>f", "<cmd>Telescope find_files<CR>")
-ADD_KEYMAP("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
+ADD_KEYMAP("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
+ADD_KEYMAP("n", "<leader>ss", "<cmd>lua require('telescope.builtin').spell_suggest()<CR>")
 
 telescope.setup({
 	defaults = {
