@@ -32,10 +32,10 @@ local config = {
 		{
 			elements = {
 				-- Elements can be strings or table with id and size keys.
-				{ id = "scopes", size = 0.5 },
+				{ id = "scopes", size = 0.75 },
 				--[[ "breakpoints", ]]
 				--[[ "stacks", ]]
-				"watches",
+				{ id = "watches", size = 0.25 },
 			},
 			size = 40, -- 40 columns
 			position = "left",

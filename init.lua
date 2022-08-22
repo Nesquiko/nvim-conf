@@ -30,5 +30,3 @@ plugin_loader:load_configs({
 	"plugin.config.yabs",
 	"plugin.config.debugger",
 })
-
--- require("setup.debugger")
