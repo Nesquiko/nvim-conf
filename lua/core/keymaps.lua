@@ -67,7 +67,8 @@ keymap("v", "y", "myy`hay", opts)
 keymap("v", "Y", "myY`y", opts)
 
 -- Does not yank after selecting and pasting
-keymap("v", "p", '"_dP', opts)
+keymap("x", "p", '"_dP', opts)
+--[[ keymap("x", "<leader>p", '"_dP', opts) ]]
 
 -- ########## Visual Block ########## --
 
