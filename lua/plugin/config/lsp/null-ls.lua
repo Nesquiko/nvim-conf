@@ -23,16 +23,18 @@ null_ls.setup({
 	debug = false,
 	diagnostics_format = "[#{c}] #{m} (#{s})",
 	sources = {
-		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
-		formatting.golines,
+
+		formatting.black.with({ extra_args = { "--fast" } }),
+		diagnostics.flake8.with({ extra_args = { "--max-line-length", "88" } }),
+
 		formatting.prettier.with({
 			extra_filetypes = { "toml", "solidity" },
 			extra_args = { "--no-semi", "--single-quote", "--trailing-comma", "none" },
 		}),
-
-		diagnostics.flake8.with({ extra_args = { "--max-line-length", "88" } }),
-		diagnostics.golangci_lint,
 		diagnostics.standardjs,
+
+		diagnostics.golangci_lint,
+		formatting.golines,
 	},
 })
