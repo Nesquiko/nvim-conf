@@ -4,7 +4,8 @@
 
 local M = {}
 
-local logger = require("core.log").init(vim.fn.stdpath("cache") .. "/plugin_log/")
+local log_path = vim.fn.stdpath("cache") .. "/plugin_log/"
+local logger = require("core.log").init(log_path)
 
 ---load_configs loads a plugin configurations from an array.
 ---
