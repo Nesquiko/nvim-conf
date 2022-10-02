@@ -5,6 +5,7 @@ return {
 	cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
+			buildFlags = { "-tags=unit" },
 			analyses = {
 				unusedparams = true,
 			},
