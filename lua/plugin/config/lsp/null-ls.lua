@@ -26,7 +26,7 @@ null_ls.setup({
 		formatting.stylua,
 
 		formatting.black.with({ extra_args = { "--fast" } }),
-		diagnostics.flake8.with({ extra_args = { "--max-line-length", "88" } }),
+		diagnostics.flake8.with({ extra_args = { "--max-line-length", "88", "--ignore", "E203" } }),
 
 		formatting.prettier.with({
 			extra_filetypes = { "toml", "solidity" },
