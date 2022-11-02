@@ -9,6 +9,11 @@ vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", n
 vim.fn.sign_define("DapStopped", { text = "", texthl = "", linehl = "", numhl = "" })
 
 ADD_KEYMAP("n", "<C-b>", ":lua require('dap').toggle_breakpoint()<CR>")
+ADD_KEYMAP(
+	"n",
+	"<leader>b",
+	":lua require('dap').toggle_breakpoint(vim.fn.input('Breakpoint Condition: '), nil, nil, true)<CR>"
+)
 ADD_KEYMAP("n", "<F5>", ":lua require('dap').continue()<CR>")
 ADD_KEYMAP("n", "<F29>", ":lua require('dap').terminate()<CR>")
 ADD_KEYMAP("n", "<F6>", ":lua require('dap').step_into()<CR>")
