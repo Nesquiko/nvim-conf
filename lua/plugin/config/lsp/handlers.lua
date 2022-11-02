@@ -83,8 +83,8 @@ local function lsp_keymaps(bufnr)
 		opts
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.cmd("command! Format execute 'lua vim.lsp.buf.format()'")
 
+	vim.cmd("command! Format execute 'lua vim.lsp.buf.format({ async = true })'")
 	ADD_KEYMAP("n", "<leader>ll", ":Format<CR>")
 end
 
@@ -118,8 +118,8 @@ M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 function M.enable_format_on_save()
 	vim.cmd([[
 	  augroup format_on_save
-	    autocmd!
-	    autocmd BufWritePre * lua vim.lsp.buf.format()
+		autocmd!
+		autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })
 	  augroup end
 	]])
 end
@@ -145,5 +145,6 @@ function M.remove_augroup(name)
 end
 
 vim.cmd("command! LspToggleAutoFormat execute 'lua require(\"plugin.config.lsp.handlers\").toggle_format_on_save()'")
+ADD_KEYMAP("n", "<leader>ltf", ":LspToggleAutoFormat<CR>")
 
 return M
