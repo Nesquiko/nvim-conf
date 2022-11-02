@@ -20,6 +20,7 @@ ADD_KEYMAP("n", "<F28>", ":lua require('dap').repl.close()<CR>")
 
 require("plugin.config.debugger.dap-events")
 require("plugin.config.debugger.nvim-dap-go")
+require("plugin.config.debugger.nvim-dap-python")
 require("plugin.config.debugger.virtual-text")
 require("plugin.config.debugger.telescope-ext")
 require("plugin.config.debugger.nvim-dap-ui")

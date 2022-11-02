@@ -134,6 +134,8 @@ return packer.startup(function(use)
 
 	-- DAP for Go
 	use("leoluz/nvim-dap-go")
+	-- DAP for Python
+	use("mfussenegger/nvim-dap-python")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
