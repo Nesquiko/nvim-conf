@@ -63,7 +63,7 @@ Map("n", "<A-l>", ":bnext<CR>")
 Map("n", "<A-h>", ":bprevious<CR>")
 
 -- Quicker save, I am lazy
-keymap("n", "<leader>w", ":w<CR>", opts)
+Map("n", "<leader>w", ":w<CR>")
 
 -- ########## Insert ########## --
 
