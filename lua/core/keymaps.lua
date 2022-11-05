@@ -40,7 +40,7 @@ function Map(mode, keys, cmd, options)
 end
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+Map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
