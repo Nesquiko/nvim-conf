@@ -9,6 +9,9 @@
 -- SECTINO_B:
 -- 	- current vim mode
 --
+-- SECTINO_C:
+-- 	- filename
+--
 -- SECTION_X:
 -- 	- git diff of current buffer
 -- 	- current filetype of buffer
@@ -57,6 +60,11 @@ local location = {
 	padding = 0,
 }
 
+local filename = {
+	"filename",
+	path = 1
+}
+
 local progress = function()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
@@ -78,7 +86,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = {},
+		lualine_c = { filename },
 		lualine_x = { diff, filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
