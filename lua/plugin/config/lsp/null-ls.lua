@@ -11,6 +11,10 @@
 --
 -- LUA:
 -- 	- stylua for formatting
+--
+-- JS:
+-- 	- prettier for formatting
+-- 	- standardjs for diagnostics
 
 local null_ls = require("null-ls")
 
