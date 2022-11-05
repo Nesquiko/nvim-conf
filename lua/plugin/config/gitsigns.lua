@@ -4,12 +4,12 @@
 local gitsigns = require("gitsigns")
 
 -- keymaps
-ADD_KEYMAP("n", "<A-n>", "<cmd>Gitsigns next_hunk<CR>")
-ADD_KEYMAP("n", "<A-p>", "<cmd>Gitsigns prev_hunk<CR>")
-ADD_KEYMAP("n", "gp", "<cmd>Gitsigns preview_hunk<CR>")
-ADD_KEYMAP("n", "<leader>dt", "<cmd>Gitsigns diffthis<CR>")
-ADD_KEYMAP("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<CR>")
-ADD_KEYMAP("n", "<leader>ush", "<cmd>Gitsigns undo_stage_hunk<CR>")
+Map("n", "<A-n>", "<cmd>Gitsigns next_hunk<CR>")
+Map("n", "<A-p>", "<cmd>Gitsigns prev_hunk<CR>")
+Map("n", "gp", "<cmd>Gitsigns preview_hunk<CR>")
+Map("n", "<leader>dt", "<cmd>Gitsigns diffthis<CR>")
+Map("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<CR>")
+Map("n", "<leader>ush", "<cmd>Gitsigns undo_stage_hunk<CR>")
 
 gitsigns.setup({
 	signs = {
