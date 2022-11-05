@@ -10,7 +10,6 @@
 --   command_mode = "c"
 
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -78,19 +77,20 @@ Map("v", ">", ">gv")
 
 -- Maintain the cursor position when yanking a visual selection
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
-keymap("v", "y", "myy`hay", opts)
-keymap("v", "Y", "myY`y", opts)
+Map("v", "y", "myy`hay")
+Map("v", "Y", "myY`y")
 
 -- Does not yank after selecting and pasting
-keymap("x", "p", '"_dP', opts)
---[[ keymap("x", "<leader>p", '"_dP', opts) ]]
+Map("x", "p", '"_dP')
 
 -- ########## Visual Block ########## --
 
 -- ########## Terminal ########## --
 
+local term_opts = { silent = true }
+
 -- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+Map("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+Map("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+Map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+Map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
