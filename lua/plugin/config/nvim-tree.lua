@@ -4,11 +4,32 @@
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
 local nvim_tree = require("nvim-tree")
+local lib = require("nvim-tree.lib")
+local view = require("nvim-tree.view")
 local nvim_tree_config = require("nvim-tree.config")
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 Map("n", "<leader>e", ":NvimTreeToggle<cr>")
-Map("n", "<leader>t", ":NvimTreeFocus<cr>")
+
+local function edit_or_open()
+	-- open as vsplit on current node
+	local action = "edit"
+	local node = lib.get_node_at_cursor()
+
+	-- Just copy what's done normally with vsplit
+	if node.link_to and not node.nodes then
+		require('nvim-tree.actions.node.open-file').fn(action, node.link_to)
+		view.close() -- Close the tree if file was opened
+
+	elseif node.nodes ~= nil then
+		lib.expand_or_collapse(node)
+
+	else
+		require('nvim-tree.actions.node.open-file').fn(action, node.absolute_path)
+		view.close() -- Close the tree if file was opened
+	end
+
+end
 
 nvim_tree.setup({
 	disable_netrw = true,
@@ -49,7 +70,7 @@ nvim_tree.setup({
 		mappings = {
 			custom_only = false,
 			list = {
-				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+				{ key = "l", action = "edit", action_cb = edit_or_open },
 				{ key = "h", cb = tree_cb("close_node") },
 				{ key = "v", cb = tree_cb("vsplit") },
 			},
@@ -105,13 +126,4 @@ nvim_tree.setup({
 			},
 		},
 	},
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-	nested = true,
-	callback = function()
-		if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-			vim.cmd("quit")
-		end
-	end,
 })
