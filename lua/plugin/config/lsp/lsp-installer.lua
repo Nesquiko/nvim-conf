@@ -21,9 +21,6 @@ lsp_installer.on_server_ready(function(server)
 	elseif server.name == "gopls" then
 		local go_opts = require("plugin.config.lsp.settings.gopls")
 		opts = vim.tbl_deep_extend("force", go_opts, opts)
-	elseif server == "tsserver" then
-		local tsserver_opts = require("plugin.config.lsp.settings.tsserver")
-		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
 	end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
