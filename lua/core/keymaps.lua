@@ -68,7 +68,7 @@ Map("n", "<leader>w", ":w<CR>")
 -- ########## Insert ########## --
 
 -- Escape is too far away...
-keymap("i", "jj", "<ESC>", opts)
+Map("i", "jj", "<ESC>")
 
 -- ########## Visual ########## --
 
