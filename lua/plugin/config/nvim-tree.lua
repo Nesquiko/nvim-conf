@@ -7,8 +7,8 @@ local nvim_tree = require("nvim-tree")
 local nvim_tree_config = require("nvim-tree.config")
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-ADD_KEYMAP("n", "<leader>e", ":NvimTreeToggle<cr>")
-ADD_KEYMAP("n", "<leader>t", ":NvimTreeFocus<cr>")
+Map("n", "<leader>e", ":NvimTreeToggle<cr>")
+Map("n", "<leader>t", ":NvimTreeFocus<cr>")
 
 nvim_tree.setup({
 	disable_netrw = true,
