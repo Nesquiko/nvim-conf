@@ -59,8 +59,8 @@ Map("n", "<C-Left>", ":vertical resize +2<CR>")
 Map("n", "<C-Right>", ":vertical resize -2<CR>")
 
 -- Navigate buffers
-keymap("n", "<A-l>", ":bnext<CR>", opts)
-keymap("n", "<A-h>", ":bprevious<CR>", opts)
+Map("n", "<A-l>", ":bnext<CR>")
+Map("n", "<A-h>", ":bprevious<CR>")
 
 -- Quicker save, I am lazy
 keymap("n", "<leader>w", ":w<CR>", opts)
