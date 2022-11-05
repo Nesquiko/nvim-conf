@@ -29,4 +29,5 @@ plugin_loader:load_configs({
 	"plugin.config.alpha",
 	"plugin.config.yabs",
 	"plugin.config.debugger",
+	"plugin.config.trouble"
 })
