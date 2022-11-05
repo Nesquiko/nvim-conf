@@ -9,20 +9,6 @@
 --   term_mode = "t",
 --   command_mode = "c"
 
-local opts = { noremap = true, silent = true }
-
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
----function for other plugins to register keybind
----
----@param mode string in which mode the action will execute
----@param key_map string button sequence/combination
----@param action string action which will be executed
-function ADD_KEYMAP(mode, key_map, action)
-	keymap(mode, key_map, action, opts)
-end
-
 ---Function for mapping keybinds.
 ---Default options:
 ---		remap = true
@@ -33,7 +19,7 @@ end
 ---@param cmd string|function command which will be executed
 ---@param options table|nil optional options
 function Map(mode, keys, cmd, options)
-	options = options or opts
+	options = options or { noremap = true, silent = true }
 
 	vim.keymap.set(mode, keys, cmd, options)
 end
