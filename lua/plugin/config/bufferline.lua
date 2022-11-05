@@ -3,7 +3,7 @@
 
 local bufferline = require("bufferline")
 
-ADD_KEYMAP("n", "<c-w>", ":Bdelete %<CR>")
+Map("n", "<c-w>", ":Bdelete %<CR>")
 
 bufferline.setup({
 	options = {
