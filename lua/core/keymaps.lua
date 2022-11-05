@@ -73,8 +73,8 @@ Map("i", "jj", "<ESC>")
 -- ########## Visual ########## --
 
 -- Stay in indent mode when indenting
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+Map("v", "<", "<gv")
+Map("v", ">", ">gv")
 
 -- Maintain the cursor position when yanking a visual selection
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
