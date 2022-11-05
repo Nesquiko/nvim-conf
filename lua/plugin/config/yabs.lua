@@ -9,9 +9,9 @@
 --
 -- Display tasks in Telescope with ALT + t
 local yabs = require("yabs")
-ADD_KEYMAP("n", "<A-t>", "<cmd>Telescope yabs tasks<CR>")
-ADD_KEYMAP("n", "<F10>", ":lua require('yabs'):run_task('run')<CR>")
-ADD_KEYMAP("n", "<F9>", ":lua require('yabs'):run_task('build')<CR>")
+Map("n", "<A-t>", "<cmd>Telescope yabs tasks<CR>")
+Map("n", "<F10>", ":lua require('yabs'):run_task('run')<CR>")
+Map("n", "<F9>", ":lua require('yabs'):run_task('build')<CR>")
 
 local config = {
 	languages = {
