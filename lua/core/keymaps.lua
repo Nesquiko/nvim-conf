@@ -30,7 +30,7 @@ end
 ---
 ---@param mode string in which mode the cmd will execute
 ---@param keys string key sequence/combination
----@param cmd string command which will be executed
+---@param cmd string|function command which will be executed
 ---@param options table|nil optional options
 function Map(mode, keys, cmd, options)
 	options = options or opts
