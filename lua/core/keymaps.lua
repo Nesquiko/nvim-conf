@@ -50,6 +50,10 @@ Map("n", "<A-h>", ":bprevious<CR>")
 -- Quicker save, I am lazy
 Map("n", "<leader>w", ":w<CR>")
 
+-- Center to cursor with C-d and C-u
+Map("n", "<C-d>", "<C-d>zz")
+Map("n", "<C-u>", "<C-u>zz")
+
 -- ########## Insert ########## --
 
 -- Escape is too far away...
