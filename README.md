@@ -4,7 +4,8 @@ My personal neovim config.
 
 ## TODO
 
-1. automatic lsp installation through lsp-installer/mason
+1. Migrate to Mason
+2. Switch Pyright, it has problem with "with open..."
 
 ## Plugins to look at
 
