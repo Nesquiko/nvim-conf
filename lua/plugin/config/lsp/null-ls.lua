@@ -3,7 +3,9 @@
 --
 -- PYTHON:
 -- 	- black for formatting
+-- 	- reorder_python_imports for formatting
 -- 	- flake8 for diagnostics
+-- 	- mypy for diagnostics
 --
 -- GOLANG:
 -- 	- golines for formatting (also it runs goimports)
@@ -14,7 +16,6 @@
 --
 -- JS:
 -- 	- prettier for formatting
--- 	- standardjs for diagnostics
 
 local null_ls = require("null-ls")
 
@@ -38,6 +39,8 @@ null_ls.setup({
 				"E203",
 			},
 		}),
+		diagnostics.mypy,
+		formatting.reorder_python_imports,
 
 		formatting.prettier.with({
 			extra_filetypes = { "toml", "solidity" },
