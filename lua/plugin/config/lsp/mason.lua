@@ -10,6 +10,7 @@ local ensure_installed = {
 	"jsonls",
 	"pyright",
 	"gopls",
+	"tsserver",
 }
 
 require("mason-lspconfig").setup({
