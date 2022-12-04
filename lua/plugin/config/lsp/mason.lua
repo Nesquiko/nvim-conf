@@ -4,7 +4,17 @@
 -- Lsp-installer.
 
 require("mason").setup()
-require("mason-lspconfig").setup()
+
+local ensure_installed = {
+	"sumneko_lua",
+	"jsonls",
+	"pyright",
+	"gopls",
+}
+
+require("mason-lspconfig").setup({
+	ensure_installed = ensure_installed,
+})
 
 local opts = {
 	on_attach = require("plugin.config.lsp.handlers").on_attach,
@@ -12,13 +22,14 @@ local opts = {
 }
 
 local lspconfig = require("lspconfig")
-require("mason-lspconfig").setup_handlers {
+require("mason-lspconfig").setup_handlers({
 	-- The first entry (without a key) will be the default handler
 	-- and will be called for each installed server that doesn't have
 	-- a dedicated handler.
 	function(server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup {}
+		require("lspconfig")[server_name].setup({})
 	end,
+
 	-- Next, you can provide a dedicated handler for specific servers.
 	["sumneko_lua"] = function()
 		local sumneko_opts = require("plugin.config.lsp.settings.sumneko_lua")
@@ -32,16 +43,15 @@ require("mason-lspconfig").setup_handlers {
 		lspconfig.jsonls.setup(opts)
 	end,
 
-	["gopls"] = function()
-		local go_opts = require("plugin.config.lsp.settings.gopls")
-		opts = vim.tbl_deep_extend("force", go_opts, opts)
-		lspconfig.gopls.setup(opts)
-	end,
-
 	["pyright"] = function()
 		local py_opts = require("plugin.config.lsp.settings.pyright")
 		opts = vim.tbl_deep_extend("force", py_opts, opts)
 		lspconfig.pyright.setup(opts)
 	end,
 
-}
+	["gopls"] = function()
+		local go_opts = require("plugin.config.lsp.settings.gopls")
+		opts = vim.tbl_deep_extend("force", go_opts, opts)
+		lspconfig.gopls.setup(opts)
+	end,
+})

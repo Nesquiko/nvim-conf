@@ -31,7 +31,12 @@ null_ls.setup({
 
 		formatting.black.with({ extra_args = { "--fast" } }),
 		diagnostics.flake8.with({
-			extra_args = { "--max-line-length", "88", "--extend-ignore", "E203" },
+			extra_args = {
+				"--max-line-length",
+				"88",
+				"--extend-ignore",
+				"E203",
+			},
 		}),
 
 		formatting.prettier.with({
@@ -44,9 +49,9 @@ null_ls.setup({
 				"--use-tabs true",
 			},
 		}),
-		diagnostics.standardjs,
 
 		diagnostics.golangci_lint,
+		diagnostics.staticcheck,
 		formatting.golines,
 	},
 })
