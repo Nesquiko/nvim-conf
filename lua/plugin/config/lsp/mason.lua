@@ -50,6 +50,10 @@ require("mason-lspconfig").setup_handlers({
 		lspconfig.pyright.setup(opts)
 	end,
 
+	["tsserver"] = function()
+		lspconfig.tsserver.setup(opts)
+	end,
+
 	["gopls"] = function()
 		local go_opts = require("plugin.config.lsp.settings.gopls")
 		opts = vim.tbl_deep_extend("force", go_opts, opts)
