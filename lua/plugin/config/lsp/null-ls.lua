@@ -56,5 +56,9 @@ null_ls.setup({
 		diagnostics.golangci_lint,
 		diagnostics.staticcheck,
 		formatting.golines,
+
+		diagnostics.solhint,
+
+		formatting.rustfmt,
 	},
 })
