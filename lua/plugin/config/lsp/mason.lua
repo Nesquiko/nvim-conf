@@ -33,17 +33,13 @@ lspconfig.solidity.setup(opts)
 lspconfig.tsserver.setup(opts)
 
 local sumneko_opts = require("plugin.config.lsp.settings.sumneko_lua")
-opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-lspconfig.sumneko_lua.setup(opts)
+lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", sumneko_opts, opts))
 
 local jsonls_opts = require("plugin.config.lsp.settings.jsonls")
-opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-lspconfig.jsonls.setup(opts)
+lspconfig.jsonls.setup(vim.tbl_deep_extend("force", jsonls_opts, opts))
 
 local py_opts = require("plugin.config.lsp.settings.pyright")
-opts = vim.tbl_deep_extend("force", py_opts, opts)
-lspconfig.pyright.setup(opts)
+lspconfig.pyright.setup(vim.tbl_deep_extend("force", py_opts, opts))
 
 local go_opts = require("plugin.config.lsp.settings.gopls")
-opts = vim.tbl_deep_extend("force", go_opts, opts)
-lspconfig.gopls.setup(opts)
+lspconfig.gopls.setup(vim.tbl_deep_extend("force", go_opts, opts))
