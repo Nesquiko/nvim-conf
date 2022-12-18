@@ -58,6 +58,18 @@ local config = {
 				},
 			},
 		},
+		rust = {
+			tasks = {
+				run = {
+					command = "cargo run",
+					output = _CODE_RUNNER,
+				},
+				build = {
+					command = "cargo build",
+					output = _CODE_RUNNER,
+				},
+			},
+		},
 	},
 
 	-- Not configured filetypes default to this
