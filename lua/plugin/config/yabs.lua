@@ -49,22 +49,11 @@ local config = {
 				},
 			},
 		},
+
 		sh = {
 			tasks = {
 				run = {
 					command = "sh %",
-					output = _CODE_RUNNER,
-				},
-			},
-		},
-		rust = {
-			tasks = {
-				run = {
-					command = "cargo run",
-					output = _CODE_RUNNER,
-				},
-				build = {
-					command = "cargo build",
 					output = _CODE_RUNNER,
 				},
 			},
