@@ -19,14 +19,6 @@ luasnip.config.set_config({
 
 	-- Autosnippets:
 	enable_autosnippets = false,
-
-	ext_opts = {
-		[types.choiceNode] = {
-			active = {
-				virt_text = { { " « ", "NonTest" } },
-			},
-		},
-	},
 })
 
 Map({ "i", "s" }, "<c-l>", function()
