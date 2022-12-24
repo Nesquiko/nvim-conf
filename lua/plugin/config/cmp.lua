@@ -2,9 +2,6 @@
 -- File for configuring completion options in neovim.
 
 local cmp = require("cmp")
-local luasnip = require("luasnip")
-
-require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
@@ -44,13 +41,14 @@ local kind_icons = {
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body) -- For `luasnip` users.
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	mapping = {
+		-- @Note: never used these
 		-- horizontal scrolling
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		--[[ ["<C-k>"] = cmp.mapping.select_prev_item(), ]]
+		--[[ ["<C-j>"] = cmp.mapping.select_next_item(), ]]
 
 		-- horizontal scrolling inside a preview window
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
@@ -72,14 +70,10 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 
 		-- super-tab functionality
-		-- cycle through completions, expands and jumps in luasnippet
+		-- cycle through completions
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.expandable() then
-				luasnip.expand()
-				--[[ elseif luasnip.expand_or_jumpable() then ]]
-				--[[ 	luasnip.expand_or_jump() ]]
 			elseif check_backspace() then
 				fallback()
 			else
@@ -91,12 +85,10 @@ cmp.setup({
 		}),
 
 		-- super-tab functionality, reversed
-		-- cycle through completions, expands and jumps in luasnippet
+		-- cycle through completions
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-				--[[ elseif luasnip.jumpable(-1) then ]]
-				--[[ 	luasnip.jump(-1) ]]
 			else
 				fallback()
 			end
@@ -120,8 +112,8 @@ cmp.setup({
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[NVIM_LUA]",
 				luasnip = "[Snippet]",
-				buffer = "[Buffer]",
 				path = "[Path]",
+				buffer = "[Buffer]",
 			})[entry.source.name]
 			return vim_item
 		end,

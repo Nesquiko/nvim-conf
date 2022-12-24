@@ -30,4 +30,5 @@ plugin_loader:load_configs({
 	"plugin.config.yabs",
 	"plugin.config.debugger",
 	"plugin.config.trouble",
+	"plugin.config.luasnip",
 })

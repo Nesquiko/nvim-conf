@@ -14,7 +14,7 @@
 ---		remap = true
 --- 	silent = true
 ---
----@param mode string in which mode the cmd will execute
+---@param mode string|table in which mode the cmd will execute
 ---@param keys string key sequence/combination
 ---@param cmd string|function command which will be executed
 ---@param options table|nil optional options
