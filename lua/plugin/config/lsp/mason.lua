@@ -31,6 +31,7 @@ lspconfig.rust_analyzer.setup(opts)
 lspconfig.marksman.setup(opts)
 lspconfig.solidity.setup(opts)
 lspconfig.tsserver.setup(opts)
+lspconfig.bashls.setup(opts)
 
 local sumneko_opts = require("plugin.config.lsp.settings.sumneko_lua")
 lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", sumneko_opts, opts))
