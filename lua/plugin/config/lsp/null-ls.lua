@@ -9,7 +9,7 @@
 --
 -- GOLANG:
 -- 	- golines for formatting (also it runs goimports)
--- 	- golangci_lint for formatting
+-- 	- golangci_lint for diagnostics
 --
 -- LUA:
 -- 	- stylua for formatting

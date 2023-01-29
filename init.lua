@@ -31,4 +31,5 @@ plugin_loader:load_configs({
 	"plugin.config.debugger",
 	"plugin.config.trouble",
 	"plugin.config.luasnip",
+	"plugin.config.vugu",
 })

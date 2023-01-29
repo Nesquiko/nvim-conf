@@ -87,6 +87,7 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("p00f/nvim-ts-rainbow")
+	use("nvim-treesitter/playground")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
@@ -140,10 +141,10 @@ return packer.startup(function(use)
 	-- DAP for Python
 	use("mfussenegger/nvim-dap-python")
 
-	use {
+	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
-	}
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
