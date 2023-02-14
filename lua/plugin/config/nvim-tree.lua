@@ -18,28 +18,22 @@ local function edit_or_open()
 
 	-- Just copy what's done normally with vsplit
 	if node.link_to and not node.nodes then
-		require('nvim-tree.actions.node.open-file').fn(action, node.link_to)
+		require("nvim-tree.actions.node.open-file").fn(action, node.link_to)
 		view.close() -- Close the tree if file was opened
-
 	elseif node.nodes ~= nil then
 		lib.expand_or_collapse(node)
-
 	else
-		require('nvim-tree.actions.node.open-file').fn(action, node.absolute_path)
+		require("nvim-tree.actions.node.open-file").fn(
+			action,
+			node.absolute_path
+		)
 		view.close() -- Close the tree if file was opened
 	end
-
 end
 
 nvim_tree.setup({
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = false,
-	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
-		"alpha",
-	},
 	open_on_tab = false,
 	hijack_cursor = true,
 	update_cwd = true,
@@ -70,7 +64,11 @@ nvim_tree.setup({
 		mappings = {
 			custom_only = false,
 			list = {
-				{ key = "l", action = "edit", action_cb = edit_or_open },
+				{
+					key = "l",
+					action = "edit",
+					action_cb = edit_or_open,
+				},
 				{ key = "h", cb = tree_cb("close_node") },
 				{ key = "v", cb = tree_cb("vsplit") },
 			},
