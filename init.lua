@@ -16,7 +16,7 @@ plugin_loader:load_configs({
 	"plugin.config.lsp",
 	"plugin.config.telescope",
 	"plugin.config.treesitter",
-	"plugin.config.autopairs",
+	--[[ "plugin.config.autopairs", ]]
 	"plugin.config.comment",
 	"plugin.config.gitsigns",
 	"plugin.config.nvim-tree",
@@ -32,4 +32,5 @@ plugin_loader:load_configs({
 	"plugin.config.trouble",
 	"plugin.config.luasnip",
 	"plugin.config.vugu",
+	"plugin.config.copilot",
 })

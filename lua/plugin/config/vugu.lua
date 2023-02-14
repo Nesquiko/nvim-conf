@@ -35,6 +35,7 @@ local function run_formatter(code)
 	--[[ 	.. code ]]
 	--[[ 	.. "\nEOF" ]]
 
+	code = code:gsub("`", "\\`") -- escape ` in struct tags
 	local command = "cat << EOF | goimports -format-only\n" .. code .. "\nEOF"
 	local formatted = {}
 	local job_id = vim.fn.jobstart(command, {
