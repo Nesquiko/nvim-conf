@@ -33,4 +33,5 @@ plugin_loader:load_configs({
 	"plugin.config.luasnip",
 	"plugin.config.vugu",
 	"plugin.config.copilot",
+	--[[ "plugin.config.rust-tools", ]]
 })
