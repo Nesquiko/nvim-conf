@@ -42,7 +42,7 @@ project.setup({
 		"go.mod",
 	},
 	---@usage list of lsp client names to ignore when using **lsp** detection. eg: { "efm", ... }
-	ignore_lsp = {},
+	ignore_lsp = { "null-ls", "jsonls" },
 	-- Don't calculate root dir on specific directories
 	exclude_dir = {},
 	---@ Show hidden files in telescope when searching for files in a project
