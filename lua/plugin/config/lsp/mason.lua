@@ -31,6 +31,7 @@ lspconfig.rust_analyzer.setup(opts)
 lspconfig.marksman.setup(opts)
 lspconfig.solidity.setup(opts)
 lspconfig.tsserver.setup(opts)
+lspconfig.tailwindcss.setup(opts)
 lspconfig.bashls.setup(opts)
 
 local lua_ls_opts = require("plugin.config.lsp.settings.sumneko_lua")
