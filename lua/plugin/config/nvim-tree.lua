@@ -6,9 +6,9 @@
 local nvim_tree = require("nvim-tree")
 local lib = require("nvim-tree.lib")
 local view = require("nvim-tree.view")
-local nvim_tree_config = require("nvim-tree.config")
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
+-- @deprecated
+--[[ local nvim_tree_config = require("nvim-tree.config") ]]
+--[[ local tree_cb = nvim_tree_config.nvim_tree_callback ]]
 Map("n", "<leader>e", ":NvimTreeToggle<cr>")
 
 local function edit_or_open()
@@ -31,7 +31,26 @@ local function edit_or_open()
 	end
 end
 
+local function on_attach(bufnr)
+	local api = require("nvim-tree.api")
+
+	local function opts(desc)
+		return {
+			desc = "nvim-tree: " .. desc,
+			buffer = bufnr,
+			noremap = true,
+			silent = true,
+			nowait = true,
+		}
+	end
+
+	-- Mappings migrated from view.mappings.list
+	-- You will need to insert "your code goes here" for any mappings with a custom action_cb
+	vim.keymap.set("n", "l", edit_or_open, opts("Open"))
+end
+
 nvim_tree.setup({
+	on_attach = on_attach,
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_tab = false,
@@ -61,18 +80,19 @@ nvim_tree.setup({
 		--[[ height = 30, ]]
 		hide_root_folder = false,
 		side = "left",
-		mappings = {
-			custom_only = false,
-			list = {
-				{
-					key = "l",
-					action = "edit",
-					action_cb = edit_or_open,
-				},
-				{ key = "h", cb = tree_cb("close_node") },
-				{ key = "v", cb = tree_cb("vsplit") },
-			},
-		},
+		-- @deprecated
+		--[[ mappings = { ]]
+		--[[ 	custom_only = false, ]]
+		--[[ 	list = { ]]
+		--[[ 		{ ]]
+		--[[ 			key = "l", ]]
+		--[[ 			action = "edit", ]]
+		--[[ 			action_cb = edit_or_open, ]]
+		--[[ 		}, ]]
+		--[[ 		{ key = "h", cb = tree_cb("close_node") }, ]]
+		--[[ 		{ key = "v", cb = tree_cb("vsplit") }, ]]
+		--[[ 	}, ]]
+		--[[ }, ]]
 		number = false,
 		relativenumber = false,
 	},
@@ -90,7 +110,6 @@ nvim_tree.setup({
 				none = "  ",
 			},
 		},
-
 		icons = {
 			webdev_colors = true,
 			git_placement = "before",
