@@ -8,4 +8,5 @@ My personal neovim config.
 
 ## Plugins to look at
 
-1. ThePrimeagen/refactoring.nvim
+1. olexsmir/gopher.nvim
+2. ThePrimeagen/refactoring.nvim
