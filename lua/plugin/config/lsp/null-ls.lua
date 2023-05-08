@@ -65,5 +65,6 @@ null_ls.setup({
 
 		code_actions.shellcheck,
 		diagnostics.shellcheck,
+		formatting.shfmt,
 	},
 })
