@@ -27,7 +27,10 @@ local opts = {
 
 local lspconfig = require("lspconfig")
 
-lspconfig.rust_analyzer.setup(opts)
+local rust_analyzer_opts = require("plugin.config.lsp.settings.rust_analyzer")
+lspconfig.rust_analyzer.setup(
+	vim.tbl_deep_extend("force", rust_analyzer_opts, opts)
+)
 lspconfig.marksman.setup(opts)
 lspconfig.solidity.setup(opts)
 lspconfig.tsserver.setup(opts)
