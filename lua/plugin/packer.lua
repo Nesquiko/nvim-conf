@@ -86,8 +86,7 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use("p00f/nvim-ts-rainbow")
-	use("nvim-treesitter/playground")
+	use("HiPhish/nvim-ts-rainbow2")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
@@ -119,12 +118,6 @@ return packer.startup(function(use)
 
 	-- Alpha
 	use("goolord/alpha-nvim")
-
-	-- Yabs => code runner
-	use({
-		"pianocomposer321/yabs.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
 
 	use("ray-x/lsp_signature.nvim")
 

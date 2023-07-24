@@ -26,7 +26,6 @@ plugin_loader:load_configs({
 	"plugin.config.impatient",
 	"plugin.config.indent-blankline",
 	"plugin.config.alpha",
-	"plugin.config.yabs",
 	"plugin.config.debugger",
 	"plugin.config.trouble",
 	"plugin.config.luasnip",

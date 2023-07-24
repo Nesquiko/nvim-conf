@@ -51,6 +51,8 @@ null_ls.setup({
 				"--single-quote",
 				"--trailing-comma",
 				"none",
+				"--tab-width",
+				"2",
 				"--use-tabs true",
 			},
 		}),
