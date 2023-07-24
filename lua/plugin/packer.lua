@@ -45,8 +45,6 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 
-	use("windwp/nvim-autopairs") -- autopairs, closes pairs of (, [, {, ...
-
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- ext for Comment.vim
 

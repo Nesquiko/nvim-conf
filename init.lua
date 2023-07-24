@@ -9,6 +9,7 @@
 require("core.keymaps")
 require("core.options")
 require("plugin.packer")
+
 local plugin_loader = require("core.config_loader")
 plugin_loader:load_configs({
 	"plugin.config.colorscheme",
@@ -30,7 +31,5 @@ plugin_loader:load_configs({
 	"plugin.config.trouble",
 	"plugin.config.luasnip",
 	"plugin.config.copilot",
-	--[[ "plugin.config.autopairs", ]]
-	--[[ "plugin.config.vugu", ]]
 	--[[ "plugin.config.rust-tools", ]]
 })
