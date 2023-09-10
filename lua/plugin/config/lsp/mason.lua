@@ -32,7 +32,6 @@ lspconfig.rust_analyzer.setup(
 	vim.tbl_deep_extend("force", rust_analyzer_opts, opts)
 )
 lspconfig.marksman.setup(opts)
-lspconfig.solidity.setup(opts)
 lspconfig.tsserver.setup(opts)
 lspconfig.tailwindcss.setup(opts)
 lspconfig.bashls.setup(opts)
@@ -48,3 +47,6 @@ lspconfig.pyright.setup(vim.tbl_deep_extend("force", py_opts, opts))
 
 local go_opts = require("plugin.config.lsp.settings.gopls")
 lspconfig.gopls.setup(vim.tbl_deep_extend("force", go_opts, opts))
+
+local solidity_opts = require("plugin.config.lsp.settings.solidity_ls")
+lspconfig.solidity.setup(vim.tbl_deep_extend("force", solidity_opts, opts))
