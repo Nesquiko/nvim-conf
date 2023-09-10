@@ -58,6 +58,7 @@ Map("n", "<C-u>", "<C-u>zz")
 
 -- Escape is too far away...
 Map("i", "jj", "<ESC>")
+Map("i", "jk", "<ESC>")
 
 -- ########## Visual ########## --
 
