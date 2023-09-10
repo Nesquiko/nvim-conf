@@ -67,6 +67,15 @@ local function lsp_highlight_document(client)
 	end
 end
 
+function Format()
+	vim.lsp.buf.format({
+		async = false,
+		filter = function(client)
+			return client.name ~= "tsserver"
+		end,
+	})
+end
+
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	vim.api.nvim_buf_set_keymap(
@@ -157,10 +166,7 @@ local function lsp_keymaps(bufnr)
 	-- Uses Folke/Trouble instead of this
 	--[[ vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts) ]]
 
-	vim.cmd(
-		"command! Format execute 'lua vim.lsp.buf.format({ async = true })'"
-	)
-	Map("n", "<leader>ll", ":Format<CR>")
+	Map("n", "<leader>ll", Format)
 end
 
 M.on_attach = function(client, bufnr)
@@ -180,8 +186,8 @@ function M.enable_format_on_save()
 	vim.cmd([[
 	  augroup format_on_save
 		autocmd!
-		autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })
-	  augroup end
+		autocmd BufWritePre * lua Format()
+		augroup end
 	]])
 end
 
