@@ -13,7 +13,7 @@ local servers = {
 	"tsserver",
 	"marksman",
 	"rust_analyzer",
-	"solidity",
+	"solidity_ls_nomicfoundation",
 }
 
 require("mason-lspconfig").setup({
@@ -48,5 +48,7 @@ lspconfig.pyright.setup(vim.tbl_deep_extend("force", py_opts, opts))
 local go_opts = require("plugin.config.lsp.settings.gopls")
 lspconfig.gopls.setup(vim.tbl_deep_extend("force", go_opts, opts))
 
-local solidity_opts = require("plugin.config.lsp.settings.solidity_ls")
-lspconfig.solidity.setup(vim.tbl_deep_extend("force", solidity_opts, opts))
+local solidity_opts = require("plugin.config.lsp.settings.solidity")
+lspconfig.solidity_ls_nomicfoundation.setup(
+	vim.tbl_deep_extend("force", solidity_opts, opts)
+)
