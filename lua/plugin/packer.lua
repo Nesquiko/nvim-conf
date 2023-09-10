@@ -48,7 +48,7 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- ext for Comment.vim
 
-	use("kyazdani42/nvim-web-devicons") -- better icons
+	use("nvim-tree/nvim-web-devicons") -- better icons
 
 	-- Colorschemes
 	-- use("lunarvim/darkplus.nvim")
@@ -84,7 +84,6 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use("HiPhish/nvim-ts-rainbow2")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
@@ -134,10 +133,10 @@ return packer.startup(function(use)
 
 	use({
 		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
+		requires = "nvim-tree/nvim-web-devicons",
 	})
 
-	use("github/copilot.vim")
+	--[[ use("github/copilot.vim") ]]
 
 	--[[ use("simrat39/rust-tools.nvim") ]]
 	-- Automatically set up your configuration after cloning packer.nvim
