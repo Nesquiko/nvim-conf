@@ -235,7 +235,6 @@ nvim_tree.setup({
 	view = {
 		width = 30,
 		--[[ height = 30, ]]
-		hide_root_folder = false,
 		side = "left",
 		-- @deprecated
 		--[[ mappings = { ]]
@@ -254,6 +253,7 @@ nvim_tree.setup({
 		relativenumber = false,
 	},
 	renderer = {
+		root_folder_label = false,
 		add_trailing = false,
 		group_empty = false,
 		highlight_git = false,

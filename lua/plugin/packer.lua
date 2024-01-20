@@ -19,12 +19,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost packer.lua source <afile> | PackerSync
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost packer.lua source <afile> | PackerSync
+--   augroup end
+-- ]])
 
 -- Use a protected call so we don't error out on first use
 local packer = require("packer")
@@ -136,7 +136,7 @@ return packer.startup(function(use)
 		requires = "nvim-tree/nvim-web-devicons",
 	})
 
-	--[[ use("github/copilot.vim") ]]
+	use("github/copilot.vim")
 
 	--[[ use("simrat39/rust-tools.nvim") ]]
 	-- Automatically set up your configuration after cloning packer.nvim

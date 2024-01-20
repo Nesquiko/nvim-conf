@@ -166,13 +166,13 @@ local function lsp_keymaps(bufnr)
 	-- Uses Folke/Trouble instead of this
 	--[[ vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts) ]]
 
-	Map("n", "<leader>ll", Format)
+	Map("n", "<C-M-l>", Format)
 end
 
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
-	M.enable_format_on_save()
+	--[[ M.enable_format_on_save() ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

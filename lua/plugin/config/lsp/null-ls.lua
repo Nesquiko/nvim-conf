@@ -45,16 +45,15 @@ null_ls.setup({
 		formatting.reorder_python_imports,
 
 		formatting.prettier.with({
-			extra_filetypes = { "toml", "solidity" },
-			extra_args = {
-				"--no-semi",
-				"--single-quote",
-				"--trailing-comma",
-				"none",
-				"--tab-width",
-				"2",
-				"--use-tabs true",
-			},
+			--[[ extra_args = { ]]
+				--[[ "--no-semi", ]]
+				--[[ "--single-quote", ]]
+				--[[ "--trailing-comma", ]]
+				--[[ "none", ]]
+				--[[ "--tab-width", ]]
+				--[[ "2", ]]
+				--[[ "--use-tabs true", ]]
+			--[[ }, ]]
 		}),
 
 		diagnostics.golangci_lint,
@@ -62,6 +61,7 @@ null_ls.setup({
 		formatting.golines,
 
 		diagnostics.solhint,
+		formatting.forge_fmt,
 
 		formatting.rustfmt,
 

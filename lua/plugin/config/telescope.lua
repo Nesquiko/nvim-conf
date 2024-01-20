@@ -17,7 +17,12 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-		file_ignore_patterns = { "%d%d%d%d%d%d%d%d%d%d.json", "node_modules" },
+		file_ignore_patterns = {
+			"%d%d%d%d%d%d%d%d%d%d.json",
+			"node_modules",
+			"^lib/",
+			"app.js",
+		},
 		mappings = {
 			i = {
 				["<C-n>"] = actions.cycle_history_next,
