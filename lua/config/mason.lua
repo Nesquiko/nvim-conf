@@ -11,6 +11,7 @@ local to_install = {
 	"ts_ls",
 	"bashls",
 	"marksman",
+	"solidity_ls_nomicfoundation",
 
 	-- -- Formaters
 	"stylua",
