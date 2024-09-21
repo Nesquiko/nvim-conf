@@ -1,5 +1,6 @@
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local fidget = require("fidget")
 
 local formatting = null_ls.builtins.formatting
 -- local diagnostics = null_ls.builtins.diagnostics
@@ -12,6 +13,7 @@ end
 
 local function auto_format()
 	if not formatting_enabled then
+		fidget.notify("Formatting is disabled", vim.log.levels.WARN, { key = "formatting_toggle" })
 		return
 	end
 	format()
@@ -19,6 +21,11 @@ end
 
 local function toggle_format_on_save()
 	formatting_enabled = not formatting_enabled
+	fidget.notify(
+		"Formatting " .. (formatting_enabled and "enabled" or "disabled"),
+		vim.log.levels.INFO,
+		{ key = "formatting_toggle" }
+	)
 end
 
 vim.api.nvim_create_user_command("FormatToggle", toggle_format_on_save, {})
@@ -37,6 +44,7 @@ local opts = {
 		if not client.supports_method("textDocument/formatting") then
 			return
 		end
+		vim.keymap.set("n", "<leader>l", auto_format, { buffer = bufnr, desc = "Formats current buffer" })
 		vim.api.nvim_clear_autocmds({
 			group = augroup,
 			buffer = bufnr,
