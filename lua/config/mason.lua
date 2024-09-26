@@ -32,6 +32,18 @@ local capabilities =
 
 require("mason-tool-installer").setup({ ensure_installed = to_install })
 
+local augroup = vim.api.nvim_create_augroup("RustFormatting", {})
+local function format_on_save(client, bufnr)
+	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = augroup,
+		buffer = bufnr,
+		callback = function()
+			vim.lsp.buf.format({ bufnr = bufnr })
+		end,
+	})
+end
+
 require("mason-lspconfig").setup({
 	handlers = {
 		function(server_name) -- default handler (optional)
@@ -57,6 +69,13 @@ require("mason-lspconfig").setup({
 						},
 					},
 				},
+			})
+		end,
+		["rust_analyzer"] = function()
+			local lspconfig = require("lspconfig")
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				on_attach = format_on_save,
 			})
 		end,
 	},
