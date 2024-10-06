@@ -20,6 +20,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>ic", builtin.lsp_incoming_calls, opts("Telescope show incoming function calls"))
 		vim.keymap.set("n", "<leader>oc", builtin.lsp_outgoing_calls, opts("Telescope show outgoing function calls"))
 		vim.keymap.set("n", "<leader>dw", builtin.diagnostics, opts("Telescope show diagnostics for whole wokspace"))
+		vim.keymap.set(
+			"n",
+			"<leader>dc",
+			vim.diagnostic.open_float,
+			opts("Opens diagnostics floating window for line under cursor")
+		)
 
 		vim.keymap.set("n", "<leader>h", function()
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
