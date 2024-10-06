@@ -33,7 +33,7 @@ local capabilities =
 require("mason-tool-installer").setup({ ensure_installed = to_install })
 
 local augroup = vim.api.nvim_create_augroup("RustFormatting", {})
-local function format_on_save(client, bufnr)
+local function rust_on_attach(client, bufnr)
 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		group = augroup,
@@ -75,7 +75,13 @@ require("mason-lspconfig").setup({
 			local lspconfig = require("lspconfig")
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
-				on_attach = format_on_save,
+				on_attach = rust_on_attach,
+				settings = {
+					inlayHints = {
+						lifetimeElisionHints = { enable = "always" },
+						genericParameterHints = { lifetime = { enable = true } },
+					},
+				},
 			})
 		end,
 	},
