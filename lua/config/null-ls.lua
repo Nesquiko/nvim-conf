@@ -8,7 +8,12 @@ local formatting = null_ls.builtins.formatting
 
 local formatting_enabled = true
 local function format()
-	vim.lsp.buf.format({ async = false })
+	vim.lsp.buf.format({
+		async = false,
+		filter = function(client)
+			return client.name ~= "ts_ls"
+		end,
+	})
 end
 
 local function auto_format()
@@ -39,6 +44,7 @@ local opts = {
 		formatting.golines,
 		formatting.shfmt,
 		formatting.forge_fmt,
+		formatting.black,
 	},
 	on_attach = function(client, bufnr)
 		if not client.supports_method("textDocument/formatting") then
