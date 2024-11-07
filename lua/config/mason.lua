@@ -6,14 +6,13 @@ local to_install = {
 	"lua_ls",
 	"gopls",
 	"rust_analyzer",
-	"eslint",
 	"tailwindcss",
 	"ts_ls",
 	"bashls",
 	"marksman",
 	"solidity_ls_nomicfoundation",
 
-	-- -- Formaters
+	-- Formaters
 	"stylua",
 	"prettier",
 	"gofumpt",
@@ -55,6 +54,15 @@ require("mason-lspconfig").setup({
 			local lspconfig = require("lspconfig")
 			lspconfig.ts_ls.setup({
 				capabilities = vim.tbl_deep_extend("force", { documentFormattingProvider = false }, capabilities),
+				root_dir = lspconfig.util.root_pattern("package.json"),
+				single_file_support = false,
+			})
+		end,
+		["denols"] = function()
+			local lspconfig = require("lspconfig")
+			lspconfig.denols.setup({
+				capabilities = capabilities,
+				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 			})
 		end,
 		["lua_ls"] = function()
