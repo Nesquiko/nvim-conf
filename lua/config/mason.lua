@@ -50,6 +50,17 @@ require("mason-lspconfig").setup({
 				capabilities = capabilities,
 			})
 		end,
+		["gopls"] = function()
+			local lspconfig = require("lspconfig")
+			lspconfig.gopls.setup({
+				capabilities = vim.tbl_deep_extend("force", { documentFormattingProvider = false }, capabilities),
+				settings = {
+					gopls = {
+						buildFlags = { "-tags=integration" },
+					},
+				},
+			})
+		end,
 		["ts_ls"] = function()
 			local lspconfig = require("lspconfig")
 			lspconfig.ts_ls.setup({
