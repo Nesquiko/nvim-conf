@@ -46,6 +46,7 @@ local opts = {
 		formatting.forge_fmt,
 		formatting.black,
 		formatting.pg_format.with({ extra_args = { "-u", 1, "-U", 1, "-f", 1, "--no-space-function" } }),
+		formatting.mix,
 	},
 	on_attach = function(client, bufnr)
 		if not client.supports_method("textDocument/formatting") then
