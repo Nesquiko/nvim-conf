@@ -97,15 +97,31 @@ require("mason-lspconfig").setup({
 		end,
 		["rust_analyzer"] = function()
 			local lspconfig = require("lspconfig")
+
+			local cargoConfig = ".cargo/config.toml"
+			local settings = {
+				inlayHints = {
+					lifetimeElisionHints = { enable = "always" },
+					genericParameterHints = { lifetime = { enable = true } },
+				},
+			}
+
+			local exists = vim.loop.fs_stat(cargoConfig)
+			if exists then
+				for line in io.lines(cargoConfig) do
+					local target = line:match('^%s*target%s*=%s*"([^"]+)"')
+					if target then
+						settings["cargo"] = { target = target, allTargets = false }
+						settings["check"] = { allTargets = false }
+						break
+					end
+				end
+			end
+
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				on_attach = rust_on_attach,
-				settings = {
-					inlayHints = {
-						lifetimeElisionHints = { enable = "always" },
-						genericParameterHints = { lifetime = { enable = true } },
-					},
-				},
+				settings = settings,
 			})
 		end,
 	},
