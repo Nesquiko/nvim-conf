@@ -32,6 +32,7 @@ local capabilities =
 require("mason-tool-installer").setup({ ensure_installed = to_install })
 
 local augroup = vim.api.nvim_create_augroup("RustFormatting", {})
+
 local function rust_on_attach(client, bufnr)
 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 	vim.api.nvim_create_autocmd("BufWritePre", {
@@ -85,6 +86,10 @@ require("mason-lspconfig").setup({
 						runtime = { version = "Lua 5.1" },
 						diagnostics = {
 							globals = { "bit", "vim" },
+						},
+						workspace = {
+							-- Make the server aware of Neovim runtime files, inspired by https://www.reddit.com/r/neovim/comments/x3bd4i/how_can_i_get_lsp_to_recognize_builtin_neovim_api/
+							library = vim.api.nvim_get_runtime_file("lua", true),
 						},
 					},
 				},
