@@ -11,7 +11,7 @@ local function format()
 	vim.lsp.buf.format({
 		async = false,
 		filter = function(client)
-			return client.name ~= "ts_ls"
+			return client.name ~= "ts_ls" and client.name ~= "solidity_ls_nomicfoundation"
 		end,
 	})
 end
