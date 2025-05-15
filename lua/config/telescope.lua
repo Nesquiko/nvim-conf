@@ -35,7 +35,7 @@ vim.keymap.set("n", "<leader>vc", function()
 end, { desc = "Telescope find files in nvim config" })
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>g", function()
-	builtin.live_grep({ glob_pattern = "!**/app.js" })
+	builtin.live_grep({ glob_pattern = { "!**/app.js", "!**/app*.js", "!**/app*.css" } })
 end, { desc = "Telescope live grep" })
 
 vim.keymap.set("n", "<leader>ht", builtin.help_tags, { desc = "Telescope man pages" })

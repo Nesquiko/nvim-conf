@@ -57,7 +57,7 @@ require("mason-lspconfig").setup({
 				capabilities = vim.tbl_deep_extend("force", { documentFormattingProvider = false }, capabilities),
 				settings = {
 					gopls = {
-						buildFlags = { "-tags=integration" },
+						buildFlags = { "-tags=integration,e2e" },
 					},
 				},
 			})
