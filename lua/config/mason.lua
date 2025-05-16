@@ -45,6 +45,8 @@ local function rust_on_attach(client, bufnr)
 end
 
 require("mason-lspconfig").setup({
+	automatic_installation = false,
+	ensure_installed = {},
 	handlers = {
 		function(server_name) -- default handler (optional)
 			require("lspconfig")[server_name].setup({

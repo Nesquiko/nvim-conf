@@ -6,7 +6,8 @@ local formatting = null_ls.builtins.formatting
 -- local diagnostics = null_ls.builtins.diagnostics
 -- local code_actions = null_ls.builtins.code_actions
 
-local formatting_enabled = true
+local auto_formatting_enabled = true
+
 local function format()
 	vim.lsp.buf.format({
 		async = false,
@@ -17,7 +18,7 @@ local function format()
 end
 
 local function auto_format()
-	if not formatting_enabled then
+	if not auto_formatting_enabled then
 		fidget.notify("Formatting is disabled", vim.log.levels.WARN, { key = "formatting_toggle" })
 		return
 	end
@@ -25,9 +26,9 @@ local function auto_format()
 end
 
 local function toggle_format_on_save()
-	formatting_enabled = not formatting_enabled
+	auto_formatting_enabled = not auto_formatting_enabled
 	fidget.notify(
-		"Formatting " .. (formatting_enabled and "enabled" or "disabled"),
+		"Formatting " .. (auto_formatting_enabled and "enabled" or "disabled"),
 		vim.log.levels.INFO,
 		{ key = "formatting_toggle" }
 	)
@@ -52,7 +53,8 @@ local opts = {
 		if not client.supports_method("textDocument/formatting") then
 			return
 		end
-		vim.keymap.set("n", "<leader>l", auto_format, { buffer = bufnr, desc = "Formats current buffer" })
+		vim.keymap.set("n", "<leader>l", format, { buffer = bufnr, desc = "Formats current buffer" })
+		vim.keymap.set("n", "<leader>tf", toggle_format_on_save, { buffer = bufnr, desc = "Togles auto formatting" })
 		vim.api.nvim_clear_autocmds({
 			group = augroup,
 			buffer = bufnr,
