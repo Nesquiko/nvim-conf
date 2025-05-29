@@ -52,3 +52,5 @@ vim.cmd("set iskeyword+=-")
 -- r = automatically inserts comment after hitting <Enter>
 -- o = automatically inserts comment after hitting o or O, quickly delete with <C-U>
 vim.cmd("set formatoptions-=cro")
+
+vim.g.tex_flavor = "latex"
