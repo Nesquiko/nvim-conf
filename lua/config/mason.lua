@@ -113,7 +113,8 @@ require("mason-lspconfig").setup({
 				for line in io.lines(cargoConfig) do
 					local target = line:match('^%s*target%s*=%s*"([^"]+)"')
 					if target then
-						settings["cargo"] = { target = target, allTargets = false }
+						settings["cargo"].target = target
+						settings["cargo"].allTargets = false
 						settings["check"] = { allTargets = false }
 						break
 					end
