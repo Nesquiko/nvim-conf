@@ -17,8 +17,12 @@ telescope.setup({
 		preview = {
 			filesize_limit = 0.1, -- MB
 		},
+		path_display = { "filename_first" },
 	},
 	pickers = {
+		lsp_references = {
+			theme = "ivy",
+		},
 		find_files = {
 			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
 			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
@@ -38,7 +42,7 @@ vim.keymap.set("n", "<leader>g", function()
 	builtin.live_grep({ glob_pattern = { "!**/app.js", "!**/app*.js", "!**/app*.css" } })
 end, { desc = "Telescope live grep" })
 
-vim.keymap.set("n", "<leader>ht", builtin.help_tags, { desc = "Telescope man pages" })
+vim.keymap.set("n", "<leader>ht", builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>mp", builtin.man_pages, { desc = "Telescope man pages" })
 vim.keymap.set("n", "<leader>cs", builtin.colorscheme, { desc = "Telescope color scheme picker" })
 vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "Telescope spelling suggestions" })
