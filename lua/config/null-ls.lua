@@ -39,7 +39,20 @@ vim.api.nvim_create_user_command("FormatToggle", toggle_format_on_save, {})
 local opts = {
 	sources = {
 		formatting.stylua,
-		formatting.prettier,
+
+		formatting.biome.with({
+			condition = function(utils)
+				return utils.root_has_file({ "biome.json", "biome.jsonc" })
+			end,
+		}),
+
+		-- Enable prettier as a fallback if biome config is not found
+		formatting.prettier.with({
+			condition = function(utils)
+				return not utils.root_has_file({ "biome.json", "biome.jsonc" })
+			end,
+		}),
+
 		formatting.gofumpt,
 		formatting.goimports_reviser,
 		formatting.golines,
