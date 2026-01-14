@@ -98,6 +98,7 @@ require("mason-lspconfig").setup({
 			})
 		end,
 		["rust_analyzer"] = function()
+			-- NOTE if you are looking for how to not dim code behind cfg, maybe look at this https://stackoverflow.com/a/79387930
 			local lspconfig = require("lspconfig")
 
 			local cargoConfig = ".cargo/config.toml"
