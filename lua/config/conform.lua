@@ -60,6 +60,7 @@ conform.setup({
 		typescriptreact = select_js_formatter,
 		json = select_js_formatter,
 		jsonc = select_js_formatter,
+		markdown = select_js_formatter,
 
 		-- Go formatters
 		go = { "gofumpt", "goimports_reviser", "golines" },
