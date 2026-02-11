@@ -100,23 +100,24 @@ require("mason-lspconfig").setup({
 		["rust_analyzer"] = function()
 			-- NOTE if you are looking for how to not dim code behind cfg, maybe look at this https://stackoverflow.com/a/79387930
 			local lspconfig = require("lspconfig")
-
-			local cargoConfig = ".cargo/config.toml"
+			local cargo_config = ".cargo/config.toml"
 			local settings = {
-				inlayHints = {
-					lifetimeElisionHints = { enable = "always" },
-					genericParameterHints = { lifetime = { enable = true } },
+				["rust-analyzer"] = {
+					cargo = {
+						allTargets = false,
+						buildScripts = { enable = false },
+					},
+					check = { allTargets = false },
+					procMacro = { enable = false },
 				},
 			}
 
-			local exists = vim.loop.fs_stat(cargoConfig)
+			local exists = vim.loop.fs_stat(cargo_config)
 			if exists then
-				for line in io.lines(cargoConfig) do
+				for line in io.lines(cargo_config) do
 					local target = line:match('^%s*target%s*=%s*"([^"]+)"')
 					if target then
-						settings["cargo"].target = target
-						settings["cargo"].allTargets = false
-						settings["check"] = { allTargets = false }
+						settings["rust-analyzer"].cargo.target = target
 						break
 					end
 				end
